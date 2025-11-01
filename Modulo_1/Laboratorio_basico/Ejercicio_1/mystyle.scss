@@ -1,0 +1,171 @@
+@use "sass:color";
+
+
+$space-gap: 15px;
+$base-color1: #b73434;
+$base-color2: #2020f7;
+$base-color3: #0e920e;
+$color-text: #888;
+
+
+$cont1-darken4: color.adjust($base-color1, $lightness: -20%);
+$cont1-darken3: color.adjust($base-color1, $lightness: -15%);
+$cont1-darken2: color.adjust($base-color1, $lightness: -10%);
+$cont1-darken1: color.adjust($base-color1, $lightness: -5%);
+$cont1-lighten1: color.adjust($base-color1, $lightness: 5%);
+$cont1-lighten2: color.adjust($base-color1, $lightness: 10%);
+$cont1-lighten3: color.adjust($base-color1, $lightness: 15%);
+$cont1-lighten4: color.adjust($base-color1, $lightness: 20%);
+
+
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-gap;
+}
+
+.container-1,
+.container-2,
+.container-3 {
+  display: flex;
+  flex-direction: row;
+  gap: $space-gap;
+
+  .box {
+    width: 8vw;
+    height: 8vh;
+    text-align: center;
+    align-content: center;
+  }
+
+  .base-color{
+    width: 12vw;
+  }
+}
+
+.container-1 {
+  div:nth-child(1) { 
+    color: color.adjust($color-text, $lightness: 20%); 
+    background-color: color.adjust($base-color1, $lightness: -20%);
+  }
+  div:nth-child(2) { 
+    color: color.adjust($color-text, $lightness: 15%);
+    background-color: color.adjust($base-color1, $lightness: -15%);
+  }
+  div:nth-child(3) { 
+    color: color.adjust($color-text, $lightness: 10%);
+    background-color: color.adjust($base-color1, $lightness: -10%);
+  }
+  div:nth-child(4) { 
+    color: color.adjust($color-text, $lightness: 5%);
+    background-color: color.adjust($base-color1, $lightness: -5%);
+  }
+  div:nth-child(5) { 
+    color: $color-text;
+    background-color: $base-color1;
+  }
+  div:nth-child(6) {     
+    color: color.adjust($color-text, $lightness: -5%);
+    background-color: color.adjust($base-color1, $lightness: 5%);
+  }
+  div:nth-child(7) { 
+    color: color.adjust($color-text, $lightness: -10%);
+    background-color: color.adjust($base-color1, $lightness: 10%);
+  }
+  div:nth-child(8) { 
+    color: color.adjust($color-text, $lightness: -15%);
+    background-color: color.adjust($base-color1, $lightness: 15%);
+  }
+  div:nth-child(9) { 
+    color: color.adjust($color-text, $lightness: -20%);
+    background-color: color.adjust($base-color1, $lightness: 20%);
+  }
+}
+
+.container-2 {
+  div:nth-child(1) { 
+    color: color.adjust($color-text, $lightness: 20%); 
+    background-color: color.adjust($base-color2, $lightness: -20%);
+  }
+  div:nth-child(2) { 
+    color: color.adjust($color-text, $lightness: 15%);
+    background-color: color.adjust($base-color2, $lightness: -15%);
+  }
+  div:nth-child(3) { 
+    color: color.adjust($color-text, $lightness: 10%);
+    background-color: color.adjust($base-color2, $lightness: -10%);
+  }
+  div:nth-child(4) { 
+    color: color.adjust($color-text, $lightness: 5%);
+    background-color: color.adjust($base-color2, $lightness: -5%);
+  }
+  div:nth-child(5) { 
+    color: $color-text;
+    background-color: $base-color2;
+  }
+  div:nth-child(6) {     
+    color: color.adjust($color-text, $lightness: -5%);
+    background-color: color.adjust($base-color2, $lightness: 5%);
+  }
+  div:nth-child(7) { 
+    color: color.adjust($color-text, $lightness: -10%);
+    background-color: color.adjust($base-color2, $lightness: 10%);
+  }
+  div:nth-child(8) { 
+    color: color.adjust($color-text, $lightness: -15%);
+    background-color: color.adjust($base-color2, $lightness: 15%);
+  }
+  div:nth-child(9) { 
+    color: color.adjust($color-text, $lightness: -20%);
+    background-color: color.adjust($base-color2, $lightness: 20%);
+  }
+}
+
+.container-3 {
+  div:nth-child(1) { 
+    color: color.adjust($color-text, $lightness: 20%); 
+    background-color: color.adjust($base-color3, $lightness: -20%);
+  }
+  div:nth-child(2) { 
+    color: color.adjust($color-text, $lightness: 15%);
+    background-color: color.adjust($base-color3, $lightness: -15%);
+  }
+  div:nth-child(3) { 
+    color: color.adjust($color-text, $lightness: 10%);
+    background-color: color.adjust($base-color3, $lightness: -10%);
+  }
+  div:nth-child(4) { 
+    color: color.adjust($color-text, $lightness: 5%);
+    background-color: color.adjust($base-color3, $lightness: -5%);
+  }
+  div:nth-child(5) { 
+    color: $color-text;
+    background-color: $base-color3;
+  }
+  div:nth-child(6) {     
+    color: color.adjust($color-text, $lightness: -5%);
+    background-color: color.adjust($base-color3, $lightness: 5%);
+  }
+  div:nth-child(7) { 
+    color: color.adjust($color-text, $lightness: -10%);
+    background-color: color.adjust($base-color3, $lightness: 10%);
+  }
+  div:nth-child(8) { 
+    color: color.adjust($color-text, $lightness: -15%);
+    background-color: color.adjust($base-color3, $lightness: 15%);
+  }
+  div:nth-child(9) { 
+    color: color.adjust($color-text, $lightness: -20%);
+    background-color: color.adjust($base-color3, $lightness: 20%);
+  }
+}
+
+
