@@ -1,3 +1,53 @@
+@use "sass:color";
+
+/* VARIABLES */
+$bgColor: #236b94;
+$textColor: #999;
+$md: 500px;
+
+
 body {
-  background-color: aquamarine;
+  box-sizing: border-box;
+  background-color: #FFF;
+  margin: 0;
+  padding: 0;
+
+  h1 {
+    padding: 0.5em;
+  }
+}
+
+.navbar {
+  background-color: $bgColor;
+  color: white;
+}
+.nav-links {  
+  display: flex;
+  flex-direction: row;
+
+  & span {
+    flex: 1;
+    text-align: center;
+    padding: 15px 10px;
+
+    & a {
+      color: white;
+      text-decoration: none;  
+    }
+  }
+
+  & span.active,
+  & span:hover {
+    background-color: color.adjust($color: $bgColor, $lightness: -10%);
+  }
+}
+@media screen and (max-width: $md) {
+  .nav-links {
+    flex-direction: column;
+    &span {
+      flex: 1;
+      width: 100%;
+    }
+  }
+  
 }
