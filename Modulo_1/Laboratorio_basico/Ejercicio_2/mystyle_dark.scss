@@ -1,0 +1,28 @@
+@use 'variables' as *;
+@use "sass:color";
+
+.container {
+  font-weight: $text-weight_dark;
+  align-items: flex-end;
+  
+  & > div {
+    box-shadow: $shadow_dark;
+    border-radius: $radius_dark;
+  }
+  
+  & div:nth-child(1) {
+    background-color: $primary-dark-color;
+    border: 1px solid color.adjust($color: $primary-dark-color, $lightness: -20%);
+    color: $text-color_dark;
+  }
+  & div:nth-child(2) {
+      background-color: $secondary-dark-color;
+      border: 1px solid color.adjust($color: $secondary-dark-color, $lightness: -10%);
+      color: $text-color_dark;
+  }
+  & div:nth-child(3) {
+      background-color: $tertiary-dark-color;
+      border: 1px solid color.adjust($color: $tertiary-dark-color, $lightness: -5%);
+      color: $text-color_dark;
+  }
+}
