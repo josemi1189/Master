@@ -1,0 +1,11 @@
+@use "sass:color";
+$space-gap: 15px;
+$base-color1: #b73434;
+$base-color2: #2020f7;
+$base-color3: #0e920e;
+$color-text: #888;
+
+@mixin color-variation($base-color: 1, $cantBgLight: 0, $cantTextLight: 0) {
+  color: color.adjust($color-text, $lightness: $cantTextLight * 1%); 
+  background-color: color.adjust($base-color, $lightness: $cantBgLight * 1%);
+}
