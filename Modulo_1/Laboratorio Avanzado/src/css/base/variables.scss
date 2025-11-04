@@ -1,0 +1,23 @@
+/* Colors */
+$bg_body: #141414;
+$color-black: #000000;
+$color-white: #FFFFFF;
+$element-radius: 10px;
+
+/* Fuentes */
+$font-family-base: 'Jost Variable';
+
+/* Font sizes */
+$fs-sm: clamp(1.125rem, 1.0625rem, 1.3125rem);
+$fs-md: clamp(1.35rem, 1.2531rem, 1.6406rem);
+$fs-lg: clamp(1.62rem, 1.4764rem, 2.0508rem);
+$fs-xl: clamp(1.944rem, 1.7375rem, 2.5635rem);
+$fs-2xl: clamp(2.3328rem, 2.0423rem, 3.2043rem);
+$fs-3xl: clamp(3rem, 1.7083rem, 6.875rem);
+
+
+/* Breakpoints */
+$viewport-small: 470px;
+$viewport-medium: 750px;
+$viewport-normal: 1024px;
+$viewport-large: 1280px;

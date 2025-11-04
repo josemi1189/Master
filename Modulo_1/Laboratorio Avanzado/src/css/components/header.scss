@@ -1,0 +1,47 @@
+header {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   position: sticky;
+   top: 0;
+   background: $bg_body;
+   font-size: $fs-sm;
+   z-index: 1;
+
+   
+   & .header-logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0.6em;
+      
+      & img {
+         max-width: 120px;
+         padding: 0.6em;
+      }
+   }
+   @media screen and (max-width: $viewport-large) {
+      & div.platform-title {
+         display: none;
+      }
+   }
+
+   & .header-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+      align-items: center;
+      padding: 1em;
+      
+      & > div {
+         padding: 1em;
+         border-radius: $element-radius;
+
+         &:hover {
+            background: $color-white;
+            color: $color-black;
+            cursor: context-menu;
+         }
+      }
+   }
+}

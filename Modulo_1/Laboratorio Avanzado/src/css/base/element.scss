@@ -1,0 +1,29 @@
+@use 'sass:color';
+body {
+   font-family: $font-family-base;
+   background-color: $bg_body;
+   color: $color-white;
+   width: 100%;
+   margin: 0 auto;
+   
+
+   &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    background-color: $bg_body;
+    background-image: radial-gradient(
+      circle,
+      color.adjust($color: $bg_body, $lightness: 3%) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+}
+
+
+
