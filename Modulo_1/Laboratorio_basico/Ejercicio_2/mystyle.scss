@@ -1,5 +1,8 @@
-@use 'mystyle_light.scss';
-@use 'mystyle_dark.scss';
+@use "./theme_light" as *;
+//@use "./theme_dark" as *;
+
+@use "sass:color";
+
 
 body {
   background-color: #FFF;
@@ -19,4 +22,28 @@ body {
   }
 }
 
+.container {
+  font-weight: $text-weight;
+  
+  & > div {
+    box-shadow: $shadow;
+    border-radius: $radius;
+  }
+  
+  & div:nth-child(1) {
+    background-color: $primary-color;
+    border: 1px solid color.adjust($color: $primary-color, $lightness: -20%);
+    color: $text-color;
+  }
+  & div:nth-child(2) {
+      background-color: $secondary-color;
+      border: 1px solid color.adjust($color: $secondary-color, $lightness: -10%);
+      color: $text-color;
+  }
+  & div:nth-child(3) {
+      background-color: $tertiary-color;
+      border: 1px solid color.adjust($color: $tertiary-color, $lightness: -5%);
+      color: $text-color;
+  }
+}
 

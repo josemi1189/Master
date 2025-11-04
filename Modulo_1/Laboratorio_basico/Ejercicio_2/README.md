@@ -13,9 +13,7 @@ Crear dos temas distintos afectando a:
 
 - **mystyle.scss:** Estructura css general.
 
-- **variables.scss:** Variables definidas.
-
-- **mystyle_light.scss / mystyle_dark.scss:** Estilos aplicados a cada tema.
+- **theme_light.scss / theme_dark.scss:** Variables correspondientes a cada theme.
 
 Para poder comprobar cada estilo, pueden cambiar el _@use_ declarado sobre el archivo principal _mystyle.scss_.
 ![Declaración de temas](./assets/themes.jpg)
