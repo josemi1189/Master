@@ -1,0 +1,56 @@
+@use "sass:color";
+
+$header-height: 10vh;
+$footer-height: 10vh;
+
+body {
+  color: $color-text;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+div.page-container {
+  display: grid;
+  grid-template-columns: 20vw 1fr;
+  height: 100%;
+}
+
+header {
+  background-color: indianred;
+  height: $header-height;
+  //grid-area: header;
+}
+
+main {
+  background-color: $bg_body;
+  //grid-area: body;
+}
+
+nav {
+  background-color: goldenrod;
+  //grid-area: menu;
+}
+
+footer {
+  background-color: blue;
+  height: $footer-height;
+}
+
+/*
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    background-color: $bg_body;
+    background-image: radial-gradient(
+      circle,
+      color.adjust($color: $bg_body, $lightness: 3%) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: -1;
+  }*/
