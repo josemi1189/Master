@@ -4,53 +4,38 @@ $header-height: 10vh;
 $footer-height: 10vh;
 
 body {
-  color: $color-text;
-  width: 100%;
-  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  color: $fc-primary;
+}
+header {
   display: flex;
   flex-direction: column;
 }
 
 div.page-container {
   display: grid;
-  grid-template-columns: 20vw 1fr;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr;
   height: 100%;
-}
-
-header {
-  background-color: indianred;
-  height: $header-height;
-  //grid-area: header;
+  @media screen and (max-width: $viewport-medium) {
+    grid-template-columns: 1fr;
+  }
 }
 
 main {
-  background-color: $bg_body;
-  //grid-area: body;
+  background-color: $secondary-color;
 }
 
 nav {
-  background-color: goldenrod;
-  //grid-area: menu;
+  background-color: $tertiary-color;
 }
 
 footer {
-  background-color: blue;
+  background-color: $primary-color;
   height: $footer-height;
+  align-content: center;
+  font-size: $fs-sm;
+  padding: 0.5em;
 }
-
-/*
-  &::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    height: 100vh;
-    background-color: $bg_body;
-    background-image: radial-gradient(
-      circle,
-      color.adjust($color: $bg_body, $lightness: 3%) 1.5px,
-      transparent 1.5px
-    );
-    background-size: 30px 30px;
-    pointer-events: none;
-    z-index: -1;
-  }*/

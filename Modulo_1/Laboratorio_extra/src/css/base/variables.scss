@@ -1,20 +1,49 @@
 /* Colors */
-$bg_body: #dfdfdf;
-$color-text: #1d1d1d;
-$color-black: #000000;
-$color-white: #ffffff;
-$element-radius: 10px;
+
+$primary-color: #c6c600;
+$secondary-color: #e9ecef;
+$tertiary-color: #111111;
+$quaternary-color: #fafafa;
+$accent: #e6e6ba;
+
+$fc-primary: #212529;
+$fc-secondary: #fafafa;
 
 /* Font sizes */
-$fs-sm: clamp(1.125rem, 1.0625rem, 1.3125rem);
-$fs-md: clamp(1.35rem, 1.2531rem, 1.6406rem);
-$fs-lg: clamp(1.62rem, 1.4764rem, 2.0508rem);
-$fs-xl: clamp(1.944rem, 1.7375rem, 2.5635rem);
-$fs-2xl: clamp(2.3328rem, 2.0423rem, 3.2043rem);
-$fs-3xl: clamp(3rem, 1.7083rem, 6.875rem);
+
+$fs-xs: unquote("clamp(0.9375rem, 0.9rem + 0.1667vw, 1.05rem)");
+$fs-sm: unquote("clamp(1.125rem, 1.0625rem + 0.2778vw, 1.3125rem)");
+$fs-md: unquote("clamp(1.35rem, 1.2531rem + 0.4306vw, 1.6406rem)");
+$fs-lg: unquote("clamp(1.62rem, 1.4764rem + 0.6382vw, 2.0508rem)");
+$fs-xl: unquote("clamp(1.944rem, 1.7375rem + 0.9177vw, 2.5635rem)");
+$fs-2xl: unquote("clamp(2.3328rem, 2.0423rem + 1.2912vw, 3.2043rem)");
 
 /* Breakpoints */
 $viewport-small: 470px;
 $viewport-medium: 750px;
 $viewport-normal: 1024px;
 $viewport-large: 1280px;
+
+/* Other */
+$element-radius: 6px;
+
+/*
+#E0E2DB
+#D2D4C8
+#B8BDB5
+#889696
+#5F7470
+
+
+#F8F9FA
+#E9ECEF
+#DEE2E6
+#CED4DA
+#ADB5BD
+#6C757D
+#495057
+#343A40
+#212529
+
+#011C27
+#E5E5E5*/

@@ -1,0 +1,24 @@
+header {
+  position: sticky;
+  top: 0;
+  & .toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.4em;
+    background: $secondary-color;
+
+    input {
+      border-radius: $element-radius;
+    }
+  }
+
+  & .page-title {
+    background-color: $primary-color;
+    color: $secondary-color;
+    font-size: $fs-xl;
+    font-weight: bold;
+    width: 100%;
+    padding: 0.6em;
+  }
+}
