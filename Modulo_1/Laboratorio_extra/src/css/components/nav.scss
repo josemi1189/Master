@@ -1,4 +1,13 @@
+nav {
+  position: sticky;
+  top: 0;
+}
 .menu-container {
+  @media screen and (min-width: $viewport-medium) {
+    position: sticky;
+    top: 0;
+  }
+
   & .menu-title {
     font: {
       size: $fs-sm;

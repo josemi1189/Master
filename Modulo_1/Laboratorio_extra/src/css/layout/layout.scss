@@ -17,8 +17,7 @@ header {
 div.page-container {
   display: grid;
   grid-template-columns: 200px 1fr;
-  grid-template-rows: 1fr;
-  height: 100%;
+
   @media screen and (max-width: $viewport-medium) {
     grid-template-columns: 1fr;
   }
