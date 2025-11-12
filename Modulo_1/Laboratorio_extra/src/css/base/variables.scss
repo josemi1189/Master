@@ -19,31 +19,10 @@ $fs-xl: unquote("clamp(1.944rem, 1.7375rem + 0.9177vw, 2.5635rem)");
 $fs-2xl: unquote("clamp(2.3328rem, 2.0423rem + 1.2912vw, 3.2043rem)");
 
 /* Breakpoints */
-$viewport-small: 470px;
-$viewport-medium: 750px;
+$viewport-small: 480px;
+$viewport-medium: 768px;
 $viewport-normal: 1024px;
 $viewport-large: 1280px;
 
 /* Other */
 $element-radius: 6px;
-
-/*
-#E0E2DB
-#D2D4C8
-#B8BDB5
-#889696
-#5F7470
-
-
-#F8F9FA
-#E9ECEF
-#DEE2E6
-#CED4DA
-#ADB5BD
-#6C757D
-#495057
-#343A40
-#212529
-
-#011C27
-#E5E5E5*/

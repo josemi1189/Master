@@ -1,8 +1,5 @@
 @use "sass:color";
 
-$header-height: 10vh;
-$footer-height: 10vh;
-
 body {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -33,7 +30,6 @@ nav {
 
 footer {
   background-color: $primary-color;
-  height: $footer-height;
   align-content: center;
   font-size: $fs-sm;
   padding: 0.5em;
