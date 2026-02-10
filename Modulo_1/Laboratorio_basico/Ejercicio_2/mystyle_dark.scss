@@ -1,0 +1,22 @@
+@use './variables.scss' as *;
+
+body {
+  background: $bg_dark;
+}
+
+
+
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  
+
+  & .row {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #555555;
+    padding: 10px;
+  }
+}
