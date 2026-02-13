@@ -1,0 +1,13 @@
+.container {
+  height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 4em;
+
+  h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 5em;
+  }
+}

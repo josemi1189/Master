@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "declaration": false,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true, // Permite: import React from 'react' en vez de import * as React
+    "sourceMap": true, // Para debugging
+    "noLib": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "importHelpers": true, // Reutiliza funciones helpers de TS. Requiere tslib
+    "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": "src", // Base url para importación de archivos desde /src/
+    "paths": {
+      "@/*": ["*"] // Sustituye /src por @
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
