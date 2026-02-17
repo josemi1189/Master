@@ -8,7 +8,39 @@
 
 **- Muestre un logo, por ejemplo el de lemoncode, u otro que queráis.**
 
+Se incluye regla de configuración en webpack.config.js para que procese las imágenes al hacer build. Se modifica estructura de archivos y se incluye imagen en /src/assets/images.
+
+```js
+{
+  test: /\.(png|svg|jpg|jpeg|gif|ico|webp)$/i,
+  type: "asset/resource",
+},
+```
+
 **- Muestre el texto hola mundo estilado con SASS.**
+
+Se incluye nueva clase **_.logo_** en style.module.scss para dar estilo a la imagen y se centran elementos en **_.container_**
+
+```css
+.logo {
+  padding: 2em;
+  box-shadow: 0 0 3px 0 #b6b6b6;
+  max-width: 600px;
+}
+```
+
+Se incluye nuevo parámetro **_favicon_** sobre el plugin **HtmlWebpackPlugin** para que Webpack cargue y procese el favicon correctamente.
+
+```js
+plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "src/index.html",
+      scriptLoading: "blocking",
+      favicon: "./src/assets/images/favicon.ico",
+    }),
+  ],
+```
 
 ## Parte 2
 

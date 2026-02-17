@@ -1,0 +1,19 @@
+.container {
+  height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 4em;
+  align-items: center;
+
+  .logo {
+    padding: 2em;
+    box-shadow: 0 0 3px 0 #b6b6b6;
+    max-width: 600px;
+  }
+  h1 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 5em;
+  }
+}
