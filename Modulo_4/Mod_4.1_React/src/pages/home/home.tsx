@@ -1,3 +1,8 @@
+import { MemberListPod } from "@/pods";
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <MemberListPod />
+    </>
+  );
 };

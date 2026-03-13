@@ -1,0 +1,28 @@
+.headRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 1em 0;
+  text-align: center;
+}
+.memberList {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 1em;
+}
+.rowData {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  box-shadow: 0 0 3px 3px #bbbbbb;
+  background-color: white;
+  padding: 0.5em;
+  border-radius: 5px;
+
+  img {
+    width: 90px;
+    border-radius: 5px;
+  }
+}

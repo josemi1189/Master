@@ -1,5 +1,5 @@
-import { Router } from "./core/routes";
+import { AppRouter } from "./router";
 
 export const App = () => {
-  return <Router />;
+  return <AppRouter />;
 };
