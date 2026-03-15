@@ -1,4 +1,4 @@
-import * as am from "./api/api.model";
+import * as am from "@/core/models/api.model";
 import * as vm from "./member-list.vm";
 
 export const mapMemberToVm = (member: am.Member): vm.Member => ({
@@ -8,5 +8,9 @@ export const mapMemberToVm = (member: am.Member): vm.Member => ({
 });
 
 export const mapMemberListtoVM = (members: am.Member[]): vm.Member[] => {
-  return members.map((member) => mapMemberToVm(member));
+  if (members.length > 0) {
+    return members.map((member) => mapMemberToVm(member));
+  } else {
+    return [];
+  }
 };

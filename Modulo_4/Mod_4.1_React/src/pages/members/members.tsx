@@ -1,5 +1,5 @@
 import { MemberListPod } from "@/pods";
-export const Home = () => {
+export const MembersPage = () => {
   return (
     <>
       <MemberListPod />
