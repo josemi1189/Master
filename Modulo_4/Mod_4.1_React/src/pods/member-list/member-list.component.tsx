@@ -1,13 +1,21 @@
 import { Member } from "./member-list.vm";
 import style from "./member-list.module.scss";
+import { DetailIcon } from "@/common/icons";
+import { generatePath, Link } from "react-router-dom";
+import { switchRoutes } from "@/router";
 
 interface Props {
   members: Member[];
+  loading: boolean;
 }
-export const MemberListComponent: React.FC<Props> = ({ members }) => {
+export const MemberListComponent: React.FC<Props> = ({ members, loading }) => {
   return (
     <>
-      {members.length > 0 ? (
+      {loading ? (
+        <div className={style.error}>
+          <span>Cargando</span>
+        </div>
+      ) : members.length > 0 ? (
         <>
           <div className={style.headRow}>
             <span>Avatar</span>
@@ -22,6 +30,15 @@ export const MemberListComponent: React.FC<Props> = ({ members }) => {
                 </span>
                 <span>{member.id}</span>
                 <span>{member.login}</span>
+                <span>
+                  <Link
+                    to={generatePath(switchRoutes.details, {
+                      id: member.login,
+                    })}
+                  >
+                    <DetailIcon />
+                  </Link>
+                </span>
               </div>
             ))}
           </div>

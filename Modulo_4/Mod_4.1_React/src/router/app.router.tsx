@@ -2,20 +2,23 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { switchRoutes } from "./routes";
 
-import { MembersPage } from "@/pages";
+import { MembersPage, MemberDetail } from "@/pages";
 import { AppLayout } from "@/layout/layout";
 import { SearchProvider } from "@/core/context/search.context";
+import { MemberListProvider } from "@/core/context/memberList.context";
 
 export const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <SearchProvider>
-        <AppLayout>
-          <Routes>
-            <Route path={switchRoutes.home} element={<MembersPage />} />
-            <Route path={switchRoutes.details} element={<MembersPage />} />
-          </Routes>
-        </AppLayout>
+        <MemberListProvider>
+          <AppLayout>
+            <Routes>
+              <Route path={switchRoutes.home} element={<MembersPage />} />
+              <Route path={switchRoutes.details} element={<MemberDetail />} />
+            </Routes>
+          </AppLayout>
+        </MemberListProvider>
       </SearchProvider>
     </BrowserRouter>
   );

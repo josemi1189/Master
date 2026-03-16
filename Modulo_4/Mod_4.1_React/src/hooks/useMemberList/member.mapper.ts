@@ -1,10 +1,11 @@
-import * as am from "@/core/models/api.model";
-import * as vm from "./member-list.vm";
+import * as am from "@/core/models/member-api.model";
+import * as vm from "@/core/models/member-vm.model";
 
 export const mapMemberToVm = (member: am.Member): vm.Member => ({
-  id: member.id,
+  id: String(member.id),
   login: member.login,
   avatarUrl: member.avatar_url,
+  htmlUrl: member.html_url,
 });
 
 export const mapMemberListtoVM = (members: am.Member[]): vm.Member[] => {

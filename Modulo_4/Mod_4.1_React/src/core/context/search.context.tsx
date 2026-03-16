@@ -1,22 +1,26 @@
 import React, { useState } from "react";
+import { DEFAULT_ORG } from "../constants/constants";
 
 interface SearchContext {
-  filter: string;
-  setFilter: React.Dispatch<React.SetStateAction<string>>;
+  organization: string;
+  setOrganization: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const SearchContext = React.createContext<SearchContext>({
-  filter: "",
-  setFilter: () => {},
+  organization: "",
+  setOrganization: () => {},
 });
 
 export const SearchProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [filter, setFilter] = useState("lemoncode");
+  const [organization, setOrganization] = useState<string>("");
+  if (organization === "") {
+    setOrganization(DEFAULT_ORG);
+  }
 
   return (
-    <SearchContext.Provider value={{ filter, setFilter }}>
+    <SearchContext.Provider value={{ organization, setOrganization }}>
       {children}
     </SearchContext.Provider>
   );

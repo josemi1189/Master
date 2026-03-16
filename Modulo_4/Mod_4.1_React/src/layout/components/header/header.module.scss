@@ -12,8 +12,13 @@
     max-width: 900px;
   }
 }
-.logo > img {
+.logo img {
   width: 140px;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 500ms;
+  }
 }
 .search {
   display: flex;
