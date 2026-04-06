@@ -1,11 +1,11 @@
 interface SwitchRoutes {
   home: string;
+  members: string;
   details: string;
-  avanzado: string;
 }
 
 export const switchRoutes: SwitchRoutes = {
   home: "/",
   details: "/detalle/:id",
-  avanzado: "/avanzado",
+  members: "/miembros",
 };

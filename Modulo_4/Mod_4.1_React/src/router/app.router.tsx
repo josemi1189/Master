@@ -6,6 +6,7 @@ import { MembersPage, MemberDetail } from "@/pages";
 import { AppLayout } from "@/layout/layout";
 import { SearchProvider } from "@/core/context/search.context";
 import { MemberListProvider } from "@/core/context/memberList.context";
+import { Homepage } from "@/pages/home/home";
 
 export const AppRouter: React.FC = () => {
   return (
@@ -14,7 +15,8 @@ export const AppRouter: React.FC = () => {
         <MemberListProvider>
           <AppLayout>
             <Routes>
-              <Route path={switchRoutes.home} element={<MembersPage />} />
+              <Route path={switchRoutes.home} element={<Homepage />} />
+              <Route path={switchRoutes.members} element={<MembersPage />} />
               <Route path={switchRoutes.details} element={<MemberDetail />} />
             </Routes>
           </AppLayout>

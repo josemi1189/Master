@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import style from "./header.module.scss";
-import { SearchIcon } from "@/common/icons";
 import { SearchContext } from "@/core/context/search.context";
 import React from "react";
 import { Link } from "react-router-dom";
 import { switchRoutes } from "@/router";
+import { Button } from "@mui/material";
+import { Search } from "@mui/icons-material";
 
 export const Header = () => {
   const { organization, setOrganization } = useContext(SearchContext);
@@ -27,9 +28,17 @@ export const Header = () => {
             }}
             className={style.input}
           />
-          <button className={style.btn} onClick={() => setOrganization(value)}>
+          {/*<button className={style.btn} onClick={() => setOrganization(value)}>
             <SearchIcon />
-          </button>
+          </button>*/}
+          <Button
+            variant="contained"
+            color="warning"
+            size="small"
+            onClick={() => setOrganization(value)}
+          >
+            <Search />
+          </Button>
         </div>
       </div>
     </header>
