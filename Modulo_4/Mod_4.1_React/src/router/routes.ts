@@ -1,11 +1,11 @@
 interface SwitchRoutes {
   home: string;
   details: string;
-  avanzado: string;
+  rickandmorty: string;
 }
 
 export const switchRoutes: SwitchRoutes = {
   home: "/",
   details: "/detalle/:id",
-  avanzado: "/avanzado",
+  rickandmorty: "/rickandmorty",
 };
