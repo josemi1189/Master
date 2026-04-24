@@ -1,7 +1,8 @@
 .header {
   display: flex;
   justify-content: center;
-  box-shadow: 0 0 3px 3px #cccccc;
+  box-shadow: 0 0 2px 2px #cccccc;
+  padding: 0 0.3em;
 
   .content {
     display: flex;
@@ -13,26 +14,11 @@
   }
 }
 .logo img {
-  width: 140px;
+  width: 185px;
+  padding: 0.5em;
 
   &:hover {
     transform: scale(1.2);
     transition: transform 500ms;
-  }
-}
-.search {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-
-  .input {
-    padding: 0.6em;
-    border-radius: 5px;
-    box-shadow: 0 0 2px 2px #bbb;
-    border: none;
-
-    &:hover {
-      box-shadow: 0 0 2px 2px #797979;
-    }
   }
 }

@@ -1,16 +1,34 @@
-import { Member } from "@/core/models/member-vm.model";
 import style from "./member-detail.module.scss";
 import { Link } from "react-router-dom";
 import { switchRoutes } from "@/router";
-interface Props {
-  member: Member;
-}
-export const MemberDetailComponent: React.FC<Props> = ({ member }) => {
+import { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { MembersListContext } from "@/core/context/memberList.context";
+import { createEmptyMember, Member } from "@/core/models/member-vm.model";
+
+
+export const MemberDetail: React.FC = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [member, setMember] = useState<Member>(createEmptyMember());
+  const { membersData } = useContext(MembersListContext);
+
+  useEffect(() => {
+    if (!id) {
+      navigate(switchRoutes.home);
+    }
+    const data = membersData.find((member) => member.login === id);
+    if (data) setMember(data);
+  }, [membersData, id]);
+
+  if (!id) return null;
+
   return (
     <div className={style.content}>
       <div className={style.linkBefore}>
         <span>
-          <Link to={switchRoutes.home}>Página principal</Link>
+          <Link to={switchRoutes.miembros}>Listado de miembros</Link>
         </span>
       </div>
       <div className={style.member}>

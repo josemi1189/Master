@@ -11,3 +11,7 @@ export const createEmptyMember = (): Member => ({
   htmlUrl: "",
   login: "",
 });
+
+export const createEmptyMemberList = (): Member[] => {
+  return [createEmptyMember()];
+};

@@ -1,3 +1,7 @@
+.capitalize {
+  text-transform: capitalize;
+}
+
 .headRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -10,13 +14,14 @@
   display: grid;
   grid-template-columns: auto;
   gap: 1em;
+  padding: 0em 1em 1em;
 }
 .rowData {
   display: grid;
   grid-template-columns: repeat(3, 1fr) 5em;
   align-items: center;
   justify-items: center;
-  box-shadow: 0 0 3px 3px #bbbbbb;
+  box-shadow: 0 0 3px 3px $grey-700;
   background-color: white;
   padding: 0.5em;
   border-radius: 5px;

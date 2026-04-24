@@ -1,1 +1,1 @@
-export * from "./member-list.pod";
+export * from "./member-list.component";

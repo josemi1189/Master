@@ -1,0 +1,16 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .emptyButton {
+    cursor: auto;
+    border: none;
+  }
+
+  .buttonsPage {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3em;
+  }
+}

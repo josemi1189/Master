@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { DEFAULT_ORG } from "../constants/constants";
 
 interface SearchContext {
-  organization: string;
-  setOrganization: React.Dispatch<React.SetStateAction<string>>;
+  organizationSearch: string;
+  setOrganizationSearch: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const SearchContext = React.createContext<SearchContext>({
-  organization: "",
-  setOrganization: () => {},
+  organizationSearch: "",
+  setOrganizationSearch: () => {},
 });
 
 export const SearchProvider: React.FC<React.PropsWithChildren> = ({
@@ -20,7 +20,12 @@ export const SearchProvider: React.FC<React.PropsWithChildren> = ({
   }
 
   return (
-    <SearchContext.Provider value={{ organization, setOrganization }}>
+    <SearchContext.Provider
+      value={{
+        organizationSearch: organization,
+        setOrganizationSearch: setOrganization,
+      }}
+    >
       {children}
     </SearchContext.Provider>
   );

@@ -1,25 +1,40 @@
 import * as api from "./api/character.model";
-import { Character } from "./character-list.vm";
+import {
+  Results,
+  CharacterData,
+  Info,
+  createEmptyCharacterData,
+} from "./character-list.vm";
 
-export const mapCharacterToVM = (character: api.Character): Character => ({
-  created: character.created,
-  episode: character.episode,
-  gender: character.gender,
+const mapCharacterResultToVM = (character: api.Results): Results => ({
   id: character.id,
-  image: character.image,
   name: character.name,
-  species: character.species,
   status: character.status,
+  species: character.species,
   type: character.type,
-  url: character.url,
+  gender: character.gender,
+  location: { name: character.location.name, url: character.location.url },
+  image: character.image,
+  episode: character.episode.map((url) => {
+    return url;
+  }),
 });
 
-export const mapCharactersListToVM = (
-  characters: api.Character[],
-): Character[] => {
-  if (characters.length > 0) {
-    return characters.map((character) => mapCharacterToVM(character));
+export const mapCharacterListToVM = (
+  characters: api.CharacterDataApi,
+): CharacterData => {
+  if (characters.results) {
+    const results: Results[] = characters.results.map((character) =>
+      mapCharacterResultToVM(character),
+    );
+    const info: Info = {
+      totalCharacters: characters.info.count,
+      nextPage: characters.info.next,
+      totalPages: characters.info.pages,
+      prevPage: characters.info.prev,
+    };
+    return { results, info };
   } else {
-    return [];
+    return createEmptyCharacterData();
   }
 };

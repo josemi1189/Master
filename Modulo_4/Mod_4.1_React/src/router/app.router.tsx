@@ -1,31 +1,40 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { switchRoutes } from "./routes";
-
-import { MembersPage, MemberDetail, Rickandmorty } from "@/pages";
-import { AppLayout } from "@/layout/layout";
-import { SearchProvider } from "@/core/context/search.context";
-import { MemberListProvider } from "@/core/context/memberList.context";
-import { Homepage } from "@/pages/home/home";
+import {
+  HomeScene,
+  MembersScene,
+  MemberDetailScene,
+  CharacterListScene,
+} from "@/scenes";
+import { MemberListProvider, SearchProvider } from "@/core/context";
 
 export const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
-      <SearchProvider>
-        <MemberListProvider>
-          <AppLayout>
-            <Routes>
-              <Route path={switchRoutes.home} element={<Homepage />} />
-              <Route path={switchRoutes.members} element={<MembersPage />} />
-              <Route path={switchRoutes.details} element={<MemberDetail />} />
-              <Route
-                path={switchRoutes.rickandmorty}
-                element={<Rickandmorty />}
-              />
-            </Routes>
-          </AppLayout>
-        </MemberListProvider>
-      </SearchProvider>
+      <Routes>
+        <Route path={switchRoutes.home} element={<HomeScene />} />
+        <Route path={`${switchRoutes.miembros}*`} element={<MembersRouter />} />
+        <Route
+          path={`${switchRoutes.rickandmorty}*`}
+          element={<CharacterListScene />}
+        />
+        <Route path="/*" element={<Navigate to={switchRoutes.home} />} />
+      </Routes>
     </BrowserRouter>
+  );
+};
+
+export const MembersRouter: React.FC = () => {
+  return (
+    <SearchProvider>
+      <MemberListProvider>
+        <Routes>
+          <Route path="" element={<MembersScene />} />
+          <Route path={switchRoutes.details} element={<MemberDetailScene />} />
+          <Route path="/*" element="" />
+        </Routes>
+      </MemberListProvider>
+    </SearchProvider>
   );
 };

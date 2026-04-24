@@ -1,44 +1,55 @@
-import { Character } from "./character-list.vm";
 import style from "./character-list.module.scss";
 import { DetailIcon } from "@/common/icons";
-import { generatePath, Link } from "react-router-dom";
-import { switchRoutes } from "@/router";
+import { LoadingIcon } from "@/common/icons";
+import { Button } from "@mui/material";
+import { DetailsCard } from "./components/details-card";
+import { Pagination } from "@/common/pagination/pagination";
+import { useCharacterList } from "@/hooks/useCharacterList";
+import { Search } from "@/common/search/search.component";
 
-interface Props {
-  charactersList: Character[];
-}
-export const CharactersListComponent: React.FC<Props> = ({
-  charactersList,
-}) => {
+export const CharacterList: React.FC = () => {
+  const {
+    selectedRow,
+    handleOpen,
+    handleClose,
+    charactersList,
+    isLoading,
+    currentPage,
+    setCurrentPage,
+    handleFilterChange,
+  } = useCharacterList();
+
   return (
     <>
-      {charactersList.length > 0 ? (
+      {selectedRow && <DetailsCard data={selectedRow} onClose={handleClose} />}
+      <h1>Personajes de Rick & Morty</h1>
+      <Search handleFilterChange={(value) => handleFilterChange(value)} />
+      {isLoading ? (
+        <div className={style.info}>
+          <LoadingIcon />
+        </div>
+      ) : charactersList.results.length > 0 &&
+        charactersList.results[0].id !== null ? (
         <>
-          <div className={style.headRow}>
-            <span>Avatar</span>
-            <span>ID</span>
-            <span>Name</span>
-          </div>
           <div className={style.memberList}>
-            {charactersList.map((member) => (
-              <div key={member.id} className={style.rowData}>
-                <span>
+            {charactersList.results.map((member) => (
+              <div key={member.id} className={style.row}>
+                {member.image !== "" && (
                   <img src={member.image} alt={member.name} />
-                </span>
-                <span>{member.id}</span>
+                )}
                 <span>{member.name}</span>
-                <span>
-                  <Link
-                    to={generatePath(switchRoutes.details, {
-                      id: member.name,
-                    })}
-                  >
-                    <DetailIcon />
-                  </Link>
-                </span>
+
+                <Button key={member.id} onClick={() => handleOpen(member)}>
+                  <DetailIcon color="info" key={member.id} />
+                </Button>
               </div>
             ))}
           </div>
+          <Pagination
+            totalPages={charactersList.info.totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </>
       ) : (
         <div className={style.error}>
