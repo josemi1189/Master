@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import style from "./pagination.module.scss";
 import { AfterIcon, BeforeIcon } from "../icons";
-import { ButtonPagination } from "./components/button-pagination";
 
 interface PaginationProps {
   totalPages: number;
@@ -49,39 +48,39 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
 
   return (
     <div className={style.pagination}>
-      <ButtonPagination
-        isDisabled={currentPage === 1}
+      <button
+        disabled={currentPage === 1}
         onClick={() => handleActualPage(currentPage - 1)}
+        className={style.arrow}
       >
         <BeforeIcon />
-      </ButtonPagination>
+      </button>
 
       <div className={style.buttonsPage}>
         {Array.isArray(visiblePages) &&
           visiblePages.map((page, index) => (
             <React.Fragment key={index}>
               {visiblePages[index - 1] + 1 !== page && page !== 1 ? (
-                <ButtonPagination className={style.emptyButton}>
-                  ...
-                </ButtonPagination>
+                <button className={style.emptyButton}>...</button>
               ) : null}
-              <ButtonPagination
+              <button
                 key={page}
                 onClick={() => handleActualPage(page)}
                 className={currentPage === page ? style.active : style.button}
               >
                 {page}
-              </ButtonPagination>
+              </button>
             </React.Fragment>
           ))}
       </div>
 
-      <ButtonPagination
-        isDisabled={currentPage === totalPages}
+      <button
+        disabled={currentPage === totalPages}
         onClick={() => handleActualPage(currentPage + 1)}
+        className={style.arrow}
       >
         <AfterIcon />
-      </ButtonPagination>
+      </button>
     </div>
   );
 };

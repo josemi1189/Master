@@ -32,6 +32,9 @@ export const CharacterList: React.FC = () => {
         charactersList.results[0].id !== null ? (
         <>
           <div className={style.memberList}>
+            <div>
+              {`Se han encontrado ${charactersList.info.totalCharacters} resultados.`}
+            </div>
             {charactersList.results.map((member) => (
               <div key={member.id} className={style.row}>
                 {member.image !== "" && (

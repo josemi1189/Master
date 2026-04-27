@@ -44,6 +44,7 @@ export const MemberListComponent: React.FC = () => {
         </div>
       ) : paginatedMembers.length > 0 ? (
         <div className={style.memberList}>
+          <div>Se han encontrado {membersData.length} resultados.</div>
           {paginatedMembers.map((member) => (
             <div key={member.id} className={style.rowData}>
               <span>

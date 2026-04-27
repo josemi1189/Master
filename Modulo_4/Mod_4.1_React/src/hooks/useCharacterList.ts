@@ -8,7 +8,6 @@ import {
 } from "@/pods/character-list/character-list.vm";
 
 export const useCharacterList = () => {
-  //const { info, results } = charactersList;
   const [charactersList, setCharacterList] = useState<CharacterData>(
     createEmptyCharacterData,
   );

@@ -18,8 +18,6 @@ export const getCharacterList = async (
     ? `${baseUrl}?${params}`
     : baseUrl;
 
-  console.log("URLSearch: ", urlSearch);
-
   const result = await fetch(urlSearch);
   if (result) {
     return result.json();
