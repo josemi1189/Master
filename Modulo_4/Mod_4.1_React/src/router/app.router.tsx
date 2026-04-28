@@ -32,7 +32,7 @@ export const MembersRouter: React.FC = () => {
         <Routes>
           <Route path="" element={<MembersScene />} />
           <Route path={switchRoutes.details} element={<MemberDetailScene />} />
-          <Route path="/*" element="" />
+          <Route path="/*" element={<Navigate to={switchRoutes.home} />} />
         </Routes>
       </MemberListProvider>
     </SearchProvider>
