@@ -1,5 +1,4 @@
 import style from "./member-detail.module.scss";
-import { Link } from "react-router-dom";
 import { switchRoutes } from "@/router";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,11 +25,6 @@ export const MemberDetail: React.FC = () => {
 
   return (
     <div className={style.details}>
-      <div className={style.linkBefore}>
-        <span>
-          <Link to={switchRoutes.miembros}>Listado de miembros</Link>
-        </span>
-      </div>
       <div className={style.member}>
         <div className={style.image}>
           {member.avatarUrl && (

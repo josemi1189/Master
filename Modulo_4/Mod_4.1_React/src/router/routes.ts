@@ -9,9 +9,16 @@ interface SwitchRoutes {
 
 export const switchRoutes: SwitchRoutes = {
   home: "/",
-  details: "detalle/:id",
+  details: ":id",
   miembros: "/miembros/",
   rickandmorty: "/rickandmorty/",
+};
+
+export const routesBreadcumbs: Record<string, string> = {
+  home: "",
+  details: "",
+  miembros: "Miembros",
+  rickandmorty: "Rick and Morty",
 };
 
 interface Routes extends Omit<SwitchRoutes, "details"> {
