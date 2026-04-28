@@ -9,7 +9,9 @@ export const CenteredLayout: React.FC<PropsWithChildren> = ({ children }) => {
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "center",
+        alignItems: "center",
         gap: "4em",
+        height: "90vh",
       }}
     >
       {children}

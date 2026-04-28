@@ -11,31 +11,33 @@ export const Breadcrumbs: React.FC = () => {
   const separator = <span className={style.separator}>/</span>;
 
   return (
-    <nav className={style.breadcrumbs} aria-label="breadcrumb">
-      <Link to={routes.home} aria-label="Página principal">
-        <HomeIcon />
-      </Link>
+    <div className={style.breadcrumbs} aria-label="breadcrumb">
+      <div className={style.content}>
+        <Link to={routes.home} aria-label="Página principal">
+          <HomeIcon />
+        </Link>
 
-      {pathnames.map((item, index) => {
-        const isLast = index === pathnames.length - 1;
+        {pathnames.map((item, index) => {
+          const isLast = index === pathnames.length - 1;
 
-        // Nombre amigable o item de la URL
-        const displayName = routesBreadcumbs[item] || item;
-        return (
-          <React.Fragment key={item}>
-            {separator}
-            {!isLast ? (
-              <Link to={`/${item}`} className={style.item} key={index}>
-                {displayName}
-              </Link>
-            ) : (
-              <span key={index} className={style.item}>
-                {displayName}
-              </span>
-            )}
-          </React.Fragment>
-        );
-      })}
-    </nav>
+          // Nombre amigable o item de la URL
+          const displayName = routesBreadcumbs[item] || item;
+          return (
+            <React.Fragment key={item}>
+              {separator}
+              {!isLast ? (
+                <Link to={`/${item}`} className={style.item} key={index}>
+                  {displayName}
+                </Link>
+              ) : (
+                <span key={index} className={style.item}>
+                  {displayName}
+                </span>
+              )}
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </div>
   );
 };

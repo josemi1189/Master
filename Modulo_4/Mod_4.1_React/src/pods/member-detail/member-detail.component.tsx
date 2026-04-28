@@ -25,27 +25,29 @@ export const MemberDetail: React.FC = () => {
 
   return (
     <div className={style.details}>
-      <div className={style.member}>
-        <div className={style.image}>
-          {member.avatarUrl && (
-            <img src={member.avatarUrl} alt={`Imagen de ${member.login}`} />
-          )}
+      <div className={style.content}>
+        <div className={style.id}>
+          <span>{member.id}</span>
         </div>
-        <div className={style.rowData}>
-          <div className={style.id}>
-            <span>{member.id}</span>
+        <div className={style.member}>
+          <div className={style.image}>
+            {member.avatarUrl && (
+              <img src={member.avatarUrl} alt={`Imagen de ${member.login}`} />
+            )}
           </div>
-          <div>
-            <label>
-              <AccountBox />
-            </label>
-            <span>{member.login}</span>
-          </div>
-          <div>
-            <label>
-              <GitHub />
-            </label>
-            <span>{member.htmlUrl}</span>
+          <div className={style.rowData}>
+            <div>
+              <label>
+                <AccountBox />
+              </label>
+              <span>{member.login}</span>
+            </div>
+            <div>
+              <label>
+                <GitHub />
+              </label>
+              <span>{member.htmlUrl}</span>
+            </div>
           </div>
         </div>
       </div>

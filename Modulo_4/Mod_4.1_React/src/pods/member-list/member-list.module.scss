@@ -26,6 +26,10 @@
   padding: 0.5em;
   border-radius: 5px;
 
+  @media (max-width: $viewport-sm) {
+    max-width: 90%;
+  }
+
   img {
     width: 90px;
     border-radius: 5px;

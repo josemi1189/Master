@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   box-shadow: 0 0 2px 2px #cccccc;
-  padding: 0 0.3em;
+  padding: 0 0.6em;
 
   .content {
     display: flex;
@@ -12,6 +12,11 @@
     width: 100%;
     max-width: 900px;
   }
+}
+.title {
+  font-size: $fs-xs;
+  text-align: right;
+  text-wrap: balance;
 }
 .logo img {
   width: 185px;

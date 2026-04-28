@@ -12,6 +12,9 @@ export const Header: React.FC = () => {
             <img src="/logo.webp" alt="Logo" />
           </Link>
         </div>
+        <div className={style.title}>
+          <h2>Módulo 4.1 - Frameworks - React Laboratorio</h2>
+        </div>
       </div>
     </header>
   );

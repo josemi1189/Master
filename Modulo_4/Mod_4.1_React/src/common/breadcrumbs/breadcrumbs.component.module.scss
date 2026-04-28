@@ -1,6 +1,14 @@
 .breadcrumbs {
   padding: 0.6em 1em;
   background-color: $grey-700;
+  display: flex;
+
+  .content {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    margin: 0 auto;
+  }
 
   .item {
     text-transform: capitalize;
