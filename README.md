@@ -4,4 +4,5 @@
 - **Módulo 1** - Layout
 - **Módulo 2** - JavaScript / TypeScript
 - **Módulo 3** - Layout - Bundling (Vite / Webpack)
-- **Módulo 4.1** - Frameworks - React Laboratorio
+- **Módulo 4.1** - Frameworks - React
+- **Módulo 4.2** - Frameworks - Vue
