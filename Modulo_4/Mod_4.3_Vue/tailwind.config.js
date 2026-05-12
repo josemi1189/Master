@@ -5,8 +5,14 @@ export default {
     extend: {
       colors: {
         dark: {
-          bg: "#f1f1f1",
+          bg: "#e5e7eb",
+          bgLight: "#fefefe",
+          primaryColor: "#134E4A",
+          accent: "#407B77",
+          bgButton: "#d1d5db",
           border: "#3a3a3a",
+          text: "#374151",
+          textLight: "#e5e7eb",
         },
       },
     },

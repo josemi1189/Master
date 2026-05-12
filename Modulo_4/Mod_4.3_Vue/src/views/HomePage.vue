@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Header from "./HeaderComponent.vue";
+import WeeklyPlan from "@/views/weeklyPlan/WeeklyPlan.vue";
+</script>
 
 <template>
-  <div>HomePage view</div>
+  <Header />
+  <WeeklyPlan />
 </template>
