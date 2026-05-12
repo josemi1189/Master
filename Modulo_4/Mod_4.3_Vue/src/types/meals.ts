@@ -29,4 +29,5 @@ export interface ModalData {
   name: string;
   dayId: string;
   mealType: MealType;
+  favorite: boolean;
 }

@@ -12,8 +12,8 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
       id: "1",
       day: "Lunes",
       lunch: [
-        { id: "1", name: "Pasta a la carbonara", favorite: false },
-        { id: "2", name: "Ensalada verde", favorite: false },
+        { id: "1", name: "Pasta a la carbonara", favorite: true },
+        { id: "2", name: "Ensalada verde", favorite: true },
       ],
       dinner: [
         { id: "3", name: "Pescado al horno", favorite: false },
@@ -122,12 +122,14 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
       const dishIndexPosition = getPositionIndexById(day!, dishId, mealType);
       if (day && dishIndexPosition !== -1) {
         const dishName = day[mealType][dishIndexPosition]?.name;
+        const favorite = day[mealType][dishIndexPosition]?.favorite || false;
 
         modalData.value = {
           dishId,
           name: dishName!,
           dayId: dayId,
           mealType,
+          favorite: favorite,
         };
       }
     }
@@ -142,13 +144,14 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
     mealType: MealType,
     dishName: string,
     dishId?: string,
+    favoriteState?: boolean,
   ) => {
     const dayData = getDayDataById(dayId);
     if (!dayData) return;
     dayData[mealType].push({
       id: dishId || getRandomID(),
       name: dishName,
-      favorite: false,
+      favorite: favoriteState || false,
     });
   };
   const deleteDish = (dayId: string, mealType: MealType, dishId: string) => {
@@ -160,7 +163,13 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
 
   const updateDish = (oldData: ModalData, newData: ModalData) => {
     deleteDish(oldData.dayId, oldData.mealType, oldData.dishId);
-    addDish(newData.dayId, newData.mealType, newData.name, newData.dishId);
+    addDish(
+      newData.dayId,
+      newData.mealType,
+      newData.name,
+      newData.dishId,
+      newData.favorite,
+    );
   };
 
   return {

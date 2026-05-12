@@ -6,11 +6,18 @@
     ></div>
 
     <div
-      class="w-96 p-2 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgLight"
+      class="w-96 p-4 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgLight"
     >
       <div class="flex flex-row w-full justify-between">
         <div v-if="dishesStore.modalOption === 'modify'">
-          <button @click="handleFavorites">Favorito</button>
+          <button @click="handleFavorites(!favorite)">
+            <span v-if="favorite"
+              ><FavoriteFillIcon class="text-red-700 text-3xl"
+            /></span>
+            <span v-else
+              ><FavoriteEmptyIcon class="text-red-700 text-3xl"
+            /></span>
+          </button>
         </div>
         <div
           class="p-1 hover:text-dark-primaryColor text-dark-accent transition-colors flex self-end"
@@ -116,6 +123,8 @@
 
 <script setup lang="ts">
 import CloseIcon from "@/assets/icons/CloseIcon.vue";
+import FavoriteEmptyIcon from "@/assets/icons/FavoriteEmptyIcon.vue";
+import FavoriteFillIcon from "@/assets/icons/FavoriteFillIcon.vue";
 import { useDishesStore } from "@/stores/DishesStore";
 import type { MealType } from "@/types/meals";
 import { computed, ref, watch } from "vue";
@@ -124,6 +133,7 @@ const dishId = ref<string | null>("");
 const dish = ref<string>("");
 const dayWeek = ref<string>("");
 const mealTime = ref<MealType>("lunch");
+const favorite = ref<boolean>(false);
 
 defineProps<{
   id?: string;
@@ -143,6 +153,7 @@ watch(
       dish.value = dishesStore.modalData.name;
       dayWeek.value = dishesStore.modalData.dayId;
       mealTime.value = dishesStore.modalData.mealType;
+      favorite.value = dishesStore.modalData.favorite;
     } else {
       dish.value = "";
       dayWeek.value = "";
@@ -168,20 +179,23 @@ const handleSubmitForm = () => {
 };
 
 const handleUpdateForm = () => {
-  dishesStore.updateDish(
-    {
-      dishId: dishesStore.modalData!.dishId,
-      dayId: dishesStore.modalData!.dayId,
-      mealType: dishesStore.modalData!.mealType,
-      name: dishesStore.modalData!.name,
-    },
-    {
-      dishId: dishesStore.modalData!.dishId,
-      dayId: dayWeek.value,
-      mealType: mealTime.value,
-      name: dish.value,
-    },
-  );
+  const oldData = {
+    dishId: dishesStore.modalData!.dishId,
+    dayId: dishesStore.modalData!.dayId,
+    mealType: dishesStore.modalData!.mealType,
+    name: dishesStore.modalData!.name,
+    favorite: dishesStore.modalData!.favorite,
+  };
+  const newData = {
+    dishId: dishesStore.modalData!.dishId,
+    dayId: dayWeek.value,
+    mealType: mealTime.value,
+    name: dish.value,
+    favorite: favorite.value,
+  };
+  console.log("New data: ", newData);
+
+  dishesStore.updateDish(oldData, newData);
   dishesStore.closeModalState();
 };
 const handleDeleteForm = () => {
@@ -194,7 +208,8 @@ const handleDeleteForm = () => {
 
   dishesStore.closeModalState();
 };
-const handleFavorites = () => {
-  console.log("favorite");
+const handleFavorites = (newFavoriteState: boolean) => {
+  console.log("newFavorite: ", newFavoriteState);
+  favorite.value = newFavoriteState;
 };
 </script>
