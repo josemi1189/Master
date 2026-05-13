@@ -9,6 +9,13 @@
       class="w-96 p-4 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgLight"
     >
       <div class="flex flex-row w-full justify-between">
+        <div
+          class="p-1 hover:text-dark-primaryColor text-dark-accent transition-colors flex self-end"
+          @click="dishesStore.closeModalState"
+          aria-label="Cierra modal"
+        >
+          <CloseIcon />
+        </div>
         <div v-if="dishesStore.modalOption === 'modify'">
           <button @click="handleFavorites(!favorite)">
             <span v-if="favorite"
@@ -18,12 +25,6 @@
               ><FavoriteEmptyIcon class="text-red-700 text-3xl"
             /></span>
           </button>
-        </div>
-        <div
-          class="p-1 hover:text-dark-primaryColor text-dark-accent transition-colors flex self-end"
-          @click="dishesStore.closeModalState"
-        >
-          <CloseIcon />
         </div>
       </div>
       <div class="flex flex-col gap-5 p-4">
