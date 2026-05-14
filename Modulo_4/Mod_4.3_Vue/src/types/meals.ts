@@ -5,6 +5,7 @@ export interface Dish {
 }
 
 export type Days =
+  | (typeof DAYS)[number]
   | "Lunes"
   | "Martes"
   | "Miércoles"
@@ -13,11 +14,20 @@ export type Days =
   | "Sábado"
   | "Domingo";
 
-export interface WeekPlan {
+export const DAYS = [
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sábado",
+  "Domingo",
+] as const;
+export interface DayPlan {
   id: string;
   day: Days;
-  lunch: Dish[];
-  dinner: Dish[];
+  lunch: string[];
+  dinner: string[];
 }
 
 export type MealType = "lunch" | "dinner";
