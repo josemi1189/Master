@@ -11,7 +11,7 @@
         @input="handleFilter"
         class="block max-w-40 h-9 bg-dark-bg grow pr-3 pl-1 outline-1 outline outline-gray-400 rounded-md"
       >
-        <option value="all">Todos</option>
+        <option value="all">Menú completo</option>
         <option value="lunch">Almuerzo</option>
         <option value="dinner">Cena</option>
       </select>
