@@ -110,7 +110,7 @@
               class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-dark-primaryColor hover:text-dark-bgLight"
               :disabled="isDisabled"
             >
-              Añadir plato
+              Añadir
             </button>
           </div>
           <div
@@ -163,7 +163,6 @@ const dishesStore = useDishesStore();
 watch(
   () => dishesStore.modalOption,
   (newOption) => {
-    console.log("antes");
     if (dishesStore.modalData) {
       const data = dishesStore.modalData;
       if (newOption === "modify") {
