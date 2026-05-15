@@ -32,7 +32,7 @@ export interface DayPlan {
 
 export type MealType = "lunch" | "dinner";
 
-export type OptionModal = "add" | "modify";
+export type OptionModal = "add" | "modify" | "updateFavorites";
 
 export interface ModalData {
   dishId: string;

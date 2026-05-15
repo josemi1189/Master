@@ -16,7 +16,12 @@
         >
           <CloseIcon />
         </div>
-        <div v-if="dishesStore.modalOption === 'modify'">
+        <div
+          v-if="
+            dishesStore.modalOption === 'modify' ||
+            dishesStore.modalOption === 'updateFavorites'
+          "
+        >
           <button @click="handleFavorites(!favorite)">
             <span v-if="favorite"
               ><FavoriteFillIcon class="text-red-700 text-3xl"
@@ -93,28 +98,42 @@
             <label for="dinner">Cena</label>
           </div>
         </div>
-        <div class="w-56" v-if="dishesStore.modalOption === 'add'">
-          <button
-            @click="handleAddDish"
-            class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-dark-primaryColor hover:text-dark-bgLight"
-            :disabled="isDisabled"
+        <div class="flex flex-row gap-1 w-56">
+          <div
+            v-if="
+              dishesStore.modalOption === 'add' ||
+              dishesStore.modalOption === 'updateFavorites'
+            "
           >
-            Añadir plato
-          </button>
-        </div>
-        <div v-else class="flex flex-row gap-1">
-          <button
-            @click="handleUpdateDish"
-            class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-fuchsia-800 hover:text-dark-bgLight"
+            <button
+              @click="handleAddDish"
+              class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-dark-primaryColor hover:text-dark-bgLight"
+              :disabled="isDisabled"
+            >
+              Añadir plato
+            </button>
+          </div>
+          <div
+            v-if="
+              dishesStore.modalOption === 'modify' ||
+              dishesStore.modalOption === 'updateFavorites'
+            "
           >
-            Actualizar
-          </button>
-          <button
-            @click="handleDeleteDish"
-            class="block min-w-0 grow py-2 px-3 text-lg font-bold outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md bg-red-800 hover:bg-red-700 text-dark-bgLight"
-          >
-            Eliminar
-          </button>
+            <button
+              @click="handleUpdateDish"
+              class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-fuchsia-800 hover:text-dark-bgLight"
+            >
+              Actualizar
+            </button>
+          </div>
+          <div v-if="dishesStore.modalOption === 'modify'">
+            <button
+              @click="handleDeleteDish"
+              class="block min-w-0 grow py-2 px-3 text-lg font-bold outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md bg-red-800 hover:bg-red-700 text-dark-bgLight"
+            >
+              Eliminar
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -144,18 +163,28 @@ const dishesStore = useDishesStore();
 watch(
   () => dishesStore.modalOption,
   (newOption) => {
-    if (newOption === "modify" && dishesStore.modalData) {
+    console.log("antes");
+    if (dishesStore.modalData) {
       const data = dishesStore.modalData;
-      oldData.value = dishesStore.modalData;
-      dishId.value = data.dishId;
-      dish.value = data.name;
-      dayWeek.value = data.dayId;
-      mealTime.value = data.mealType;
-      favorite.value = dishesStore.getIsFavorite(data.name);
-    } else {
-      dish.value = props.name || "";
-      dayWeek.value = "";
-      mealTime.value = "lunch";
+      if (newOption === "modify") {
+        oldData.value = data;
+        dishId.value = data.dishId;
+        dish.value = data.name;
+        dayWeek.value = data.dayId;
+        mealTime.value = data.mealType;
+        favorite.value = dishesStore.getIsFavorite(data.name);
+      } else if (newOption === "updateFavorites") {
+        oldData.value = data;
+        dishId.value = data.dishId;
+        dish.value = data.name;
+        dayWeek.value = "";
+        mealTime.value = "lunch";
+        favorite.value = dishesStore.getIsFavorite(data.name);
+      } else {
+        dish.value = props.name || "";
+        dayWeek.value = "";
+        mealTime.value = "lunch";
+      }
     }
   },
   { immediate: true },

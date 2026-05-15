@@ -41,9 +41,8 @@ const favoriteDishes = computed(() =>
 );
 
 const handleFavorite = (dishId: string, dishName: string) => {
-  //dishesStore.modalOption = "add";
   dishesStore.modalState = true;
-  dishesStore.openModalDishes("add", dishId);
+  dishesStore.openModalDishes("updateFavorites", dishId);
   id.value = dishId;
   nameDish.value = dishName;
 };

@@ -218,7 +218,6 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
       dinner: [],
     },
   ];
-  const createEmptyDishes = (): Dish[] => [];
 
   /** HELPERS **/
   const getDayDataById = (dayId: string): DayPlan | undefined => {
@@ -253,23 +252,32 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
     let dish: Dish | null = null;
     if (dishId) {
       dish = getDishById(dishId) || null;
-    }
-    if (option === "modify" && dishId && dayId && mealType) {
-      modalData.value = {
-        dishId,
-        name: dish?.name || "",
-        dayId: dayId,
-        mealType,
-        favorite: dish?.favorite || false,
-      };
-    } else if (option === "add" && dishId) {
-      modalData.value = {
-        dishId: dish?.id || "",
-        name: dish?.name || "",
-        dayId: "",
-        mealType: "dinner",
-        favorite: dish?.favorite || false,
-      };
+
+      if (option === "modify" && dayId && mealType) {
+        modalData.value = {
+          dishId,
+          name: dish?.name || "",
+          dayId: dayId,
+          mealType,
+          favorite: dish?.favorite || false,
+        };
+      } else if (option === "add") {
+        modalData.value = {
+          dishId: dish?.id || "",
+          name: dish?.name || "",
+          dayId: "",
+          mealType: "dinner",
+          favorite: dish?.favorite || false,
+        };
+      } else if (option === "updateFavorites") {
+        modalData.value = {
+          dishId: dish?.id || "",
+          name: dish?.name || "",
+          dayId: "",
+          mealType: "dinner",
+          favorite: dish?.favorite || true,
+        };
+      }
     }
   };
   const closeModalDishes = () => {
@@ -284,18 +292,9 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
     dishId?: string,
   ) => {
     const existingDishIndex = getDishByName(dishName);
-    console.log(
-      "dayId: ",
-      dayId,
-      "\nmealType: ",
-      mealType,
-      "\ndishName: ",
-      dishName,
-      "\nexistingDishIndex: ",
-      existingDishIndex,
-    );
+
     let dishIdToAdd: string = "";
-    // Si no existe el plato, se crea uno nuevo y se obtiene su ID
+    // Si no existe el plato, se genera uno nuevo y se obtiene su ID
     if (existingDishIndex === -1) {
       dishIdToAdd = dishId || getRandomID();
       dishes.push({
@@ -304,11 +303,11 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
         favorite: false,
       });
     } else {
-      // El plato ya existe, obtener su ID
+      // El plato ya existe, obtiene su ID
       dishIdToAdd = dishes[existingDishIndex]?.id || "";
     }
 
-    // Añadir el ID del plato a weekly en el día y tipo de comida especificados
+    // Añade el ID del plato a weekly en el día y tipo de comida especificados
     const dayData = getDayDataById(dayId);
     if (dayData) {
       dayData[mealType].push(dishIdToAdd);
@@ -323,7 +322,7 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
   };
 
   const updateDish = (oldData: ModalData, newData: ModalData) => {
-    // Actualizar los datos del plato (nombre y favorito)
+    // Actualiza los datos del plato (nombre y favorito)
     const dish = getDishById(newData.dishId);
     if (dish) {
       dish.name = newData.name;
@@ -355,8 +354,6 @@ export const useDishesStore = defineStore("dishesWeekly", () => {
 
   const removeAll = () => {
     weekly.value = createEmptyWeekly();
-    dishes.splice(0, dishes.length);
-    dishes.push(...createEmptyDishes());
   };
 
   return {
