@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { routes } from "@/router/routes";
+import ConfigIcon from "@/assets/commons/icons/ConfigIcon.vue";
 </script>
 
 <template>
@@ -24,6 +25,13 @@ import { routes } from "@/router/routes";
         active-class="active-link"
       >
         Favoritos
+      </RouterLink>
+      <RouterLink
+        :to="routes.config"
+        class="shadow-md p-2 rounded-md bg-amber-100 hover:bg-dark-accent hover:text-white"
+        active-class="active-link"
+      >
+        <ConfigIcon />
       </RouterLink>
     </div>
   </div>

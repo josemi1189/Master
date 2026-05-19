@@ -5,7 +5,7 @@
       aria-hidden="true"
     ></div>
     <div
-      class="w-96 min-w-fit p-6 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgLight"
+      class="w-96 min-w-fit p-6 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgdark"
     >
       <div class="text-lg text-center">
         ¿Está seguro de querer borrar todos los platos añadidos?

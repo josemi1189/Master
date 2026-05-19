@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HeaderComponent from "@/views/HeaderComponent.vue";
-import { WeeklyPlan } from "@/views/weeklyPlan";
+import HeaderComponent from "@/views/components/HeaderComponent.vue";
+import { WeeklyPlan } from "@/views/components/weeklyPlan";
 </script>
 
 <template>

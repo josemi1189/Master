@@ -6,7 +6,7 @@
     ></div>
 
     <div
-      class="w-96 p-4 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgLight"
+      class="w-96 p-4 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgdark"
     >
       <div class="flex flex-row w-full justify-between">
         <div
@@ -107,7 +107,7 @@
           >
             <button
               @click="handleAddDish"
-              class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-dark-primaryColor hover:text-dark-bgLight"
+              class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-dark-primaryColor hover:text-dark-bgdark"
               :disabled="isDisabled"
             >
               Añadir
@@ -121,7 +121,7 @@
           >
             <button
               @click="handleUpdateDish"
-              class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-fuchsia-800 hover:text-dark-bgLight"
+              class="block min-w-0 grow py-2 px-3 text-lg font-bold bg-dark-accent disabled:bg-dark-bg disabled:text-gray-400 disabled:hover:bg-dark-bg outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md hover:bg-fuchsia-800 hover:text-dark-bgdark"
             >
               Actualizar
             </button>
@@ -129,7 +129,7 @@
           <div v-if="dishesStore.modalOption === 'modify'">
             <button
               @click="handleDeleteDish"
-              class="block min-w-0 grow py-2 px-3 text-lg font-bold outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md bg-red-800 hover:bg-red-700 text-dark-bgLight"
+              class="block min-w-0 grow py-2 px-3 text-lg font-bold outline-1 outline outline-gray-400 sm:text-sm/6 rounded-md bg-red-800 hover:bg-red-700 text-dark-bgdark"
             >
               Eliminar
             </button>
@@ -141,7 +141,11 @@
 </template>
 
 <script setup lang="ts">
-import { FavoriteEmptyIcon, FavoriteFillIcon, CloseIcon } from "@/assets/icons";
+import {
+  FavoriteEmptyIcon,
+  FavoriteFillIcon,
+  CloseIcon,
+} from "@/assets/commons/icons";
 import { useDishesStore } from "@/stores/DishesStore";
 import { DAYS, type MealType, type ModalData } from "@/types/meals";
 import { computed, ref, watch } from "vue";

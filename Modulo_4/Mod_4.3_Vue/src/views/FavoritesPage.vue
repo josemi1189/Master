@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import FavoritesComponent from "@/views/favorites/FavoritesComponent.vue";
-import MainHeader from "./HeaderComponent.vue";
+import MainHeader from "@/views/components/HeaderComponent.vue";
+import { FavoritesComponent } from "@/views/components/favorites";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full max-w-5xl mx-auto flex flex-col gap-5"
+    class="w-full max-w-5xl mx-auto flex flex-col gap-5 px-6"
     v-if="favoriteDishes.length !== 0"
   >
     <h1
@@ -8,6 +8,7 @@
     >
       Platos marcados como favoritos
     </h1>
+    <SearchComponent :filter="filter" @handle-filter="filter = $event" />
     <div class="flex flex-row flex-wrap gap-4 p-4">
       <div
         v-for="(dish, index) of favoriteDishes"
@@ -30,14 +31,19 @@
 <script setup lang="ts">
 import { useDishesStore } from "@/stores/DishesStore";
 import { computed, ref } from "vue";
-import { DishFormModal } from "@/views/weeklyPlan";
+import { DishFormModal } from "@/views/components/weeklyPlan";
+import SearchComponent from "@/assets/commons/SearchComponent.vue";
 
 const dishesStore = useDishesStore();
 const nameDish = ref<string>("");
 const id = ref<string>("");
+const filter = ref<string>("");
 
 const favoriteDishes = computed(() =>
-  dishesStore.dishes.filter((d) => d.favorite),
+  dishesStore.dishes.filter(
+    (d) =>
+      d.favorite && d.name?.toLowerCase().includes(filter.value.toLowerCase()),
+  ),
 );
 
 const handleFavorite = (dishId: string, dishName: string) => {

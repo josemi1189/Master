@@ -1,4 +1,4 @@
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 import type {
   DayPlan,
@@ -14,6 +14,8 @@ export const useDishesStore = defineStore(
     const modalState = ref(false);
     const modalOption = ref<OptionModal>("add");
     const modalData = ref<ModalData | null>(null);
+    const filterText = ref<string>("");
+    const firstDayIsMonday = ref<boolean>(true);
 
     const dishes = ref<Dish[]>([
       {
@@ -363,17 +365,19 @@ export const useDishesStore = defineStore(
       weekly,
       dishes,
       addDish,
+      modalState,
+      modalOption,
+      modalData,
+      filterText,
       updateDish,
       deleteDish,
       toggleFavorite,
-      modalState,
       openModalDishes,
       closeModalDishes,
-      modalOption,
-      modalData,
       removeAll,
       getDishById,
       getIsFavorite,
+      firstDayIsMonday,
     };
   },
   {

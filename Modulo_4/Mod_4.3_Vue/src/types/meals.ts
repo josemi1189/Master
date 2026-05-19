@@ -4,15 +4,7 @@ export interface Dish {
   favorite: boolean;
 }
 
-export type Days =
-  | (typeof DAYS)[number]
-  | "Lunes"
-  | "Martes"
-  | "Miércoles"
-  | "Jueves"
-  | "Viernes"
-  | "Sábado"
-  | "Domingo";
+export type Days = (typeof DAYS)[number];
 
 export const DAYS = [
   "Lunes",
@@ -22,6 +14,16 @@ export const DAYS = [
   "Viernes",
   "Sábado",
   "Domingo",
+] as const;
+
+export const DAYS_EN = [
+  "Domingo",
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sábado",
 ] as const;
 export interface DayPlan {
   id: string;
