@@ -6,7 +6,7 @@
     ></div>
 
     <div
-      class="w-96 p-4 flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-dark-bgdark"
+      class="w-96 p-4 bg-dark-bgLight flex flex-col shadow-xl rounded-lg justify-center items-center fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
     >
       <div class="flex flex-row w-full justify-between">
         <div
