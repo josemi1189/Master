@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: $background;
+  font-family: $ff-body;
+  color: $text;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $ff-title;
+  color: $primary-color;
+}
+
+main {
+  max-width: $viewport-xl;
+  min-height: calc(100vh - $heightHeader - $heightFooter);
+  padding: 1em;
+}
