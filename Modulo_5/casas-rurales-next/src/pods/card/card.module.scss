@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  //row-gap: 0.2em;
+  border-radius: $radius;
+  max-width: 350px;
+  width: min-content;
+  flex-grow: 1;
+
+  img {
+    border-radius: $radius;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    padding: 0.4em;
+    font-size: $fs-sm;
+
+    .name {
+      font-weight: 500;
+    }
+    .price {
+      color: #707070;
+    }
+  }
+}

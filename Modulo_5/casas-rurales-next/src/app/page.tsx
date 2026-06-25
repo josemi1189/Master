@@ -1,4 +1,5 @@
 import { MainLayout } from "@/layouts";
+import { HouseListPod } from "@/pods/house-list";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <MainLayout>
-      <h1>Casas rurales</h1>
+      <HouseListPod />
     </MainLayout>
   );
 }

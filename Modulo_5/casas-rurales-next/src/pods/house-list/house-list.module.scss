@@ -1,0 +1,14 @@
+.container {
+  padding: 1em;
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.4em;
+  }
+
+  h1 {
+    font-size: $fs-2xl;
+  }
+}

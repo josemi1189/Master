@@ -6,3 +6,5 @@
 - **Módulo 3** - Layout - Bundling (Vite / Webpack)
 - **Módulo 4.1** - Frameworks - React
 - **Módulo 4.2** - Frameworks - Vue
+- **Módulo 5** - MetaFrameworks
+  - Next.JS

@@ -22,6 +22,15 @@ h6 {
 
 main {
   max-width: $viewport-xl;
-  min-height: calc(100vh - $heightHeader - $heightFooter);
+  min-height: calc(100vh - $heightHeader);
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
