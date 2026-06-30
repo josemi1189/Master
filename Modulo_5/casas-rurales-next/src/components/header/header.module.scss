@@ -2,7 +2,6 @@
   height: $heightHeader;
   background-color: $bg-secondary;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -10,12 +9,5 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2em;
-
-  .search {
-    padding: 0.8em 1em;
-    border: none;
-    border-radius: $radius;
-    box-shadow: $box-shadow;
-  }
+  padding: 0.5em 2em;
 }

@@ -1,14 +1,47 @@
 .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   padding: 1em;
 
-  .content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2.4em;
+  .title {
+    font-size: $fs-2xl;
+    font-weight: 900;
   }
 
-  h1 {
-    font-size: $fs-2xl;
+  .searchContainer {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+
+    .searchInput {
+      width: 100%;
+      padding: 12px 12px 12px 35px;
+      border: none;
+      border-radius: $radius;
+      box-shadow: $box-shadow;
+    }
+
+    .clearBtn {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-40%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0;
+      color: #999;
+    }
   }
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3em;
+  justify-content: center;
 }
