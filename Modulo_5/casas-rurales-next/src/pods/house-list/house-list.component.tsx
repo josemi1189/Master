@@ -1,7 +1,7 @@
 import { Card } from "./components/card";
 import { House } from "./house.vm";
 import style from "./house-list.module.scss";
-import { CloseIcon } from "@/common";
+import { CloseIcon } from "@/components/icons";
 interface Props {
   houses: House[];
 }

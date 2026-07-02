@@ -1,8 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 320px;
-  width: min-content;
+  align-items: center;
   flex-grow: 1;
 
   .image {
@@ -12,7 +11,6 @@
   .content {
     display: flex;
     flex-direction: column;
-    height: 50px;
     padding: 0.2em 0.4em;
     font-size: $fs-sm;
 
@@ -20,7 +18,7 @@
       font-weight: 500;
     }
     .price {
-      color: #707070;
+      color: $color-700;
     }
   }
 }

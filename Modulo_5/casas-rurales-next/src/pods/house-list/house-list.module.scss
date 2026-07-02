@@ -1,19 +1,21 @@
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1em;
+  width: 100%;
+  @media (min-width: $viewport-xs) {
+    flex-direction: row;
+  }
 
   .title {
-    font-size: $fs-2xl;
+    font-size: $fs-3xl;
     font-weight: 900;
   }
 
   .searchContainer {
     position: relative;
     display: inline-block;
-    width: 100%;
     max-width: 300px;
 
     .searchInput {
@@ -44,4 +46,5 @@
   flex-wrap: wrap;
   gap: 3em;
   justify-content: center;
+  padding: 3em 0;
 }
