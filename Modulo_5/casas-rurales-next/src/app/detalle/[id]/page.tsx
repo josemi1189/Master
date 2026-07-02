@@ -1,3 +1,4 @@
+import { PageLayout } from "@/layouts/pageLayout";
 import { HouseDetailsPod } from "@/pods/house-details";
 interface Props {
   params: Promise<{ id: string }>;
@@ -5,5 +6,9 @@ interface Props {
 
 export default async function Details({ params }: Props) {
   const { id } = await params;
-  return <HouseDetailsPod id={id} />;
+  return (
+    <PageLayout>
+      <HouseDetailsPod id={id} />
+    </PageLayout>
+  );
 }

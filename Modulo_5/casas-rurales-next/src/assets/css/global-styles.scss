@@ -22,12 +22,14 @@ h6 {
 }
 
 main {
-  max-width: $viewport-xl;
   min-height: calc(100vh - $heightHeader);
-  padding: 1em;
+  padding: 2em 1em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  width: 100%;
+  max-width: $viewport-lg;
 }
 
 a {
