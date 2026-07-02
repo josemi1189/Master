@@ -1,10 +1,11 @@
-import { Header } from "@/components/header";
+import { HeaderMain, Footer } from "@/layouts";
 
 export const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <Header />
+      <HeaderMain />
       <main>{children}</main>
+      <Footer />
     </>
   );
 };
