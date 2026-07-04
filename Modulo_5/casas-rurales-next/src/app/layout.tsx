@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "../assets/css/global-styles.scss";
+import React from "react";
+import { ReservesProvider } from "@/contexts/reservesContext/reservesContext";
 
 export const metadata: Metadata = {
   title: "Casas rurales - Next.js",
@@ -12,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <ReservesProvider>{children}</ReservesProvider>
+      </body>
     </html>
   );
 }

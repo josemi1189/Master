@@ -5,7 +5,10 @@
   flex-grow: 1;
 
   .image {
-    border-radius: $radius;
+    position: relative;
+    img {
+      border-radius: $radius;
+    }
   }
 
   .content {
@@ -21,4 +24,8 @@
       color: $color-700;
     }
   }
+}
+
+.isReserved {
+  opacity: 0.5;
 }

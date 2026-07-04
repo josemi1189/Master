@@ -2,7 +2,7 @@ import { House } from "./house.vm";
 import style from "./house-detail.module.scss";
 import Image from "next/image";
 import { ENV } from "@/core/constants";
-import { Details } from "./components/details";
+import { Details, CheckReserve } from "./components";
 import { ShowRating } from "@/components/show-rating";
 
 interface Props {
@@ -15,6 +15,7 @@ export const HouseDetail: React.FC<Props> = ({ house }) => {
         <h1 className={style.houseName} tabIndex={-1}>
           {house.name}
         </h1>
+        <CheckReserve houseID={house.id} />
         <span>{`${house.price} € / noche`}</span>
       </header>
       <section className={style.content}>
