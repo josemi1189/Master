@@ -26,6 +26,7 @@ export const HouseDetail: React.FC<Props> = ({ house }) => {
             width={410}
             height={320}
             style={{ width: "auto", height: "auto" }}
+            loading="eager"
           />
         )}
         <Details house={house} />

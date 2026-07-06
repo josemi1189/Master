@@ -1,7 +1,7 @@
 import Image from "next/image";
 import style from "./reserved-marked.module.scss";
 
-export const ReservedMarked = () => {
+export const MarkReserved = () => {
   return (
     <Image
       src={"/reserved.png"}

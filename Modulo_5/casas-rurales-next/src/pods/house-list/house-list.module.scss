@@ -47,4 +47,11 @@
   gap: 3em;
   justify-content: center;
   padding: 3em 0;
+
+  .notFound {
+    font-size: $fs-3xl;
+    font-weight: bold;
+    font-family: $ff-title;
+    color: $details;
+  }
 }

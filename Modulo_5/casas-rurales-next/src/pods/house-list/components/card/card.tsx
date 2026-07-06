@@ -1,10 +1,9 @@
-"use client";
 import Image from "next/image";
 import { House as HouseVM } from "@/pods/house-list";
 import style from "./card.module.scss";
 import Link from "next/link";
 import { routes } from "@/core/constants";
-import { ReservedMarked } from "../reserved-marked";
+import { MarkReserved } from "../reserved-marked";
 import { useContextReserved } from "@/hooks/useContextReserved";
 interface Props {
   house: HouseVM;
@@ -29,7 +28,7 @@ export const Card: React.FC<Props> = ({ house }) => {
             alt={`${house.name}. Ubicada en ${house.address}, ${house.city}. ${isReserve ? "Estado: Reservada" : ""} `}
             loading="eager"
           />
-          {isReserve && <ReservedMarked />}
+          {isReserve && <MarkReserved />}
         </div>
         <footer className={style.content}>
           <span className={style.name}>{house.name}</span>
