@@ -1,0 +1,26 @@
+.searchContainer {
+  position: relative;
+  display: inline-block;
+  max-width: 300px;
+
+  .searchInput {
+    width: 100%;
+    padding: 12px 12px 12px 35px;
+    border: none;
+    border-radius: $radius;
+    box-shadow: $box-shadow;
+  }
+
+  .clearBtn {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-40%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    color: #999;
+  }
+}
