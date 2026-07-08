@@ -21,3 +21,19 @@ export interface House {
   amenities: string[];
   reviews: Review[];
 }
+
+export const createEmptyHouseDetailToVM = (): House => ({
+  id: "",
+  name: "",
+  description: "",
+  address: "",
+  city: "",
+  country: "",
+  bedrooms: 0,
+  beds: 0,
+  bathrooms: 0,
+  price: 0,
+  image: "",
+  amenities: [],
+  reviews: [],
+});

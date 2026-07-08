@@ -7,3 +7,15 @@ export interface House {
   price: number;
   image: string;
 }
+
+export const createEmptyHouseListToVM = (): House[] => [
+  {
+    id: "",
+    name: "",
+    description: "",
+    address: "",
+    city: "",
+    price: 0,
+    image: "",
+  },
+];

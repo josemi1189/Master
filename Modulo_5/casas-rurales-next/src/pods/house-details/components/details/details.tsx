@@ -1,4 +1,4 @@
-import { House } from "../house.vm";
+import { House } from "@/pods/house-details";
 import style from "./details.module.scss";
 
 interface Props {
