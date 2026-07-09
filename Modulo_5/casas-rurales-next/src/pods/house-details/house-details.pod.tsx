@@ -1,12 +1,10 @@
 import React from "react";
-import { getHouseDetailsById } from "./api/house-details.api";
 import { HouseDetail } from "./house-detail.component";
-import { mapHouseDetailToVm } from "./house-detail.mapped";
-interface Props {
-  id: string;
-}
-export const HouseDetailsPod: React.FC<Props> = async ({ id }) => {
-  const houseDetails = await getHouseDetailsById(id);
+import { House } from "./house.vm";
 
-  return <HouseDetail house={mapHouseDetailToVm(houseDetails)} />;
+interface Props {
+  houseDetails: House;
+}
+export const HouseDetailsPod: React.FC<Props> = ({ houseDetails }) => {
+  return <HouseDetail house={houseDetails} />;
 };
