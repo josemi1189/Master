@@ -1,3 +1,4 @@
+import { METADATA } from "@/core/constants/metadata.constant";
 import { PageLayout } from "@/layouts/pageLayout";
 import { HouseDetailsPod } from "@/pods/house-details";
 import { getHouseDetailsById } from "@/pods/house-details/api/house-details.api";
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const house = await getHouseDetailsById(id).then(mapHouseDetailToVm);
 
   return {
-    title: `${house.name} - Casas Rurales`,
+    title: `${house.name} - ${METADATA.title}`,
     description: house.description,
   };
 }

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "../assets/css/global-styles.scss";
 import React from "react";
 import { ReservesProvider } from "@/contexts/reservesContext/reservesContext";
+import { METADATA } from "@/core/constants/metadata.constant";
 
 export const metadata: Metadata = {
-  title: "Casas rurales",
-  description: `Encuentra casa rural en alquiler de casas rurales ideales para familias y grupos.
-    Jardín, barbacoa y todas las comodidades. Consulta disponibilidad y precios.`,
+  title: METADATA.title,
+  description: METADATA.description,
 };
 
 export default function RootLayout({
