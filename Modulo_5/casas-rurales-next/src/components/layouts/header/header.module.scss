@@ -1,6 +1,6 @@
 .header {
   height: $heightHeader;
-  background-color: $bg-secondary;
+  background-color: $background;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0;
@@ -16,7 +16,6 @@
     color: $primary-color;
     padding: 0.6em 1em;
     border-radius: $radius;
-    border: $color-700;
     box-shadow: $box-shadow;
     font-weight: 700;
     font-size: $fs-sm;

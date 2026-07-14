@@ -25,7 +25,7 @@ export const HouseList: React.FC<Props> = ({ houses }) => {
   return (
     <>
       <div className={style.container}>
-        <h1 className={style.title}>Casas rurales</h1>
+        <h1 className={style.title}>Encuentra tu casa rural</h1>
         <HouseSearch search={search} setSearch={setSearch} />
       </div>
       <section className={style.content}>

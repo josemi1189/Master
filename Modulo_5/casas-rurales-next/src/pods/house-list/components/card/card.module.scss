@@ -8,20 +8,54 @@
     position: relative;
     img {
       border-radius: $radius;
+      mask-image: linear-gradient(to bottom, $background 60%, transparent 100%);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        $background 60%,
+        transparent 100%
+      );
+    }
+    .rating {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
     }
   }
 
   .content {
     display: flex;
     flex-direction: column;
-    padding: 0.2em 0.4em;
+    padding: 0.6em 0.4em;
     font-size: $fs-sm;
+    row-gap: 0.4em;
 
     .name {
+      font-size: 1.1em;
       font-weight: 500;
     }
-    .price {
+    .address {
+      font-size: 0.7em;
       color: $color-700;
+    }
+    .price {
+      font-weight: 600;
+      color: $text;
+    }
+    .labelNight {
+      font-size: 0.7em;
+      color: $text;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+      //color: #d1d1d1;
+      color: $primary-color;
+
+      span {
+        padding-left: 5px;
+      }
     }
   }
 }

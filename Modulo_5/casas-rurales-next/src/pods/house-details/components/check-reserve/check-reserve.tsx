@@ -10,7 +10,7 @@ export const CheckReserve: React.FC<Props> = ({ houseID }) => {
   return (
     <div>
       <label htmlFor="reserved" className={style.label}>
-        Reservado
+        Reservada
       </label>
       <input
         id="reserved"

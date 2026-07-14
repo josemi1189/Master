@@ -11,9 +11,7 @@ const nextConfig: NextConfig = {
     dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
-        hostname: process.env.IMAGES_DOMAIN as string,
-        protocol: "http",
-        port: process.env.PORT_IMAGES_DOMAIN,
+        hostname: process.env.IMAGES_DOMAIN!,
       },
     ],
   },

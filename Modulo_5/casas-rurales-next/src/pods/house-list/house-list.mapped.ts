@@ -11,6 +11,13 @@ export const mapHouseListToVM = (houseList: apiModel.House[]): House[] => {
         city: house.city,
         price: house.price,
         image: `${ENV.BASE_PICTURES_URL}${house.image}`,
+        bedrooms: house.bedrooms,
+        beds: house.beds,
+        bathrooms: house.bathrooms,
+        rating:
+          house.reviews.reduce((total, review) => review.rating + total, 0) /
+          house.reviews.length,
+        totalReviews: house.reviews.length,
       }))
     : createEmptyHouseListToVM();
 };

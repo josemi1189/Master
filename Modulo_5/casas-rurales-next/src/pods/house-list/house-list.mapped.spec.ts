@@ -52,6 +52,9 @@ describe("mapHouseListToVM", () => {
         city: "Málaga",
         price: 150,
         image: `${process.env.BASE_PICTURES_URL}/images/casa-malaga.jpg`,
+        bedrooms: 5,
+        beds: 8,
+        bathrooms: 2,
       },
     ];
 

@@ -1,10 +1,9 @@
 import { ENV } from "@/core/constants";
-import { House } from "../house.vm";
-import { mapHouseListToVM } from "../house-list.mapped";
+import * as API from "./house.model";
 
-export const getHouseList = async (): Promise<House[]> => {
+export const getHouseList = async (): Promise<API.House[]> => {
   const url = `${ENV.BASE_API_URL}/houses`;
-  return await fetch(url, { next: { revalidate: 60 } })
-    .then((response) => response.json())
-    .then(mapHouseListToVM);
+  return await fetch(url, { next: { revalidate: 60 } }).then((response) =>
+    response.json(),
+  );
 };

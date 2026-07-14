@@ -1,5 +1,5 @@
 import { METADATA } from "@/core/constants/metadata.constant";
-import { PageLayout } from "@/layouts/pageLayout";
+import { PageLayout } from "@/components/layouts/pageLayout";
 import { HouseDetailsPod } from "@/pods/house-details";
 import { getHouseDetailsById } from "@/pods/house-details/api/house-details.api";
 import { mapHouseDetailToVm } from "@/pods/house-details/house-detail.mapped";

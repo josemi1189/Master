@@ -1,4 +1,4 @@
-import { HeaderMain, Footer } from "@/layouts";
+import { HeaderMain, Footer } from "@/components/layouts";
 
 export const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
