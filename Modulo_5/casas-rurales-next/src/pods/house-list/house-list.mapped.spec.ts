@@ -55,6 +55,8 @@ describe("mapHouseListToVM", () => {
         bedrooms: 5,
         beds: 8,
         bathrooms: 2,
+        rating: 5,
+        totalReviews: 2,
       },
     ];
 
