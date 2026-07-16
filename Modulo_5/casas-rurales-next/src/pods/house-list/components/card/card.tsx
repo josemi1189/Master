@@ -14,7 +14,6 @@ interface Props {
 export const Card: React.FC<Props> = ({ house }) => {
   const { getIsReserve } = useContextReserved();
   const isReserve = getIsReserve(house.id);
-  console.log(house.name, ": ", house.rating);
   return (
     <article className={style.card}>
       <Link
