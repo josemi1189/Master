@@ -3,5 +3,7 @@ import * as API from "./house.model";
 
 export const getHouseList = async (): Promise<API.House[]> => {
   const url = `${ENV.BASE_API_URL}/houses`;
-  return await fetch(url).then((response) => response.json());
+  return await fetch(url, { next: { revalidate: 600 } }).then((response) =>
+    response.json(),
+  );
 };
