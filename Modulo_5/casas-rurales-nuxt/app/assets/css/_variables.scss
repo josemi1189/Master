@@ -1,0 +1,36 @@
+//@use "@fontsource-variable/roboto/wght.css";
+//@use "@fontsource-variable/cormorant-garamond";
+
+/* Colors */
+$primary-color: #588656;
+$background: #f8f8f8;
+$bg-secondary: #fefefe;
+$color-700: #646464;
+$text: #2d3748;
+$text-secondary: #ffffff;
+
+/* Font sizes */
+$fs-xs: clamp(0.9375rem, 0.9rem + 0.1667vw, 1.05rem);
+$fs-sm: clamp(1.125rem, 1.0625rem + 0.2778vw, 1.3125rem);
+$fs-md: clamp(1.35rem, 1.2531rem + 0.4306vw, 1.6406rem);
+$fs-lg: clamp(1.62rem, 1.4764rem + 0.6382vw, 2.0508rem);
+$fs-xl: clamp(1.944rem, 1.7375rem + 0.9177vw, 2.5635rem);
+$fs-2xl: clamp(2.3328rem, 2.0423rem + 1.2912vw, 3.2043rem);
+$fs-3xl: clamp(2.998rem, 2.628rem + 1.612vw, 4.105rem);
+
+/* Breakpoints */
+$viewport-xs: 444px;
+$viewport-sm: 768px;
+$viewport-md: 900px;
+$viewport-lg: 1200px;
+$viewport-xl: 1550px;
+
+/* Font-family */
+$ff-title: "Cormorant Garamond Variable", serif;
+$ff-body: "Roboto Variable", sans-serif;
+
+/* Other */
+$radius: 8px;
+$box-shadow: 0px 0px 5px 4px #00000033;
+$heightHeader: 100px;
+$heightFooter: 50px;
