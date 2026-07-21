@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  @media (min-width: $viewport-xs) {
+    flex-direction: row;
+  }
+
+  .title {
+    font-size: $fs-3xl;
+    font-weight: 900;
+  }
+
+  .searchContainer {
+    position: relative;
+    display: inline-block;
+    max-width: 300px;
+
+    .searchInput {
+      width: 100%;
+      padding: 12px 12px 12px 35px;
+      border: none;
+      border-radius: $radius;
+      box-shadow: $box-shadow;
+    }
+
+    .clearBtn {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-40%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0;
+      color: #999;
+    }
+  }
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3em;
+  justify-content: center;
+  padding: 3em 0;
+}
+.notFound {
+  font-size: $fs-3xl;
+  font-weight: bold;
+  font-family: $ff-title;
+  color: $color-700;
+}

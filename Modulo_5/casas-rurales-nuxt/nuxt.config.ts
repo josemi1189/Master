@@ -13,4 +13,12 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  app: {
+    viewTransition: true,
+  },
+  runtimeConfig: {
+    baseApiUrl: "",
+    basePicturesUrl: "",
+  },
 });
