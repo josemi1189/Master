@@ -1,5 +1,5 @@
 import { mapHouseListToVM } from "./houseList.mapped";
-import * as API from "./house.model";
+import type * as API from "../../app/types/house.modelAPI";
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const data = await $fetch<API.House[]>(`${config.baseApiUrl}/houses`);

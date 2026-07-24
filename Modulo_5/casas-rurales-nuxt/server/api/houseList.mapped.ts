@@ -1,5 +1,6 @@
-import type * as API from "./house.model";
-import { createEmptyHouseListToVM, type House } from "@/types/house";
+import type * as API from "../../app/types/house.modelAPI";
+import type { House } from "@/types/house";
+import { createEmptyHouseListToVM } from "@/utils/house.empty";
 
 export const mapHouseListToVM = (
   houseList: API.House[],

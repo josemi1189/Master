@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ShowRating from "~/components/ShowRating.vue";
-import type { House } from "../../types/house";
+import type { House } from "~/types/house";
 
 /*
   const { getIsReserve } = useContextReserved();

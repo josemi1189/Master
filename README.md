@@ -8,3 +8,4 @@
 - **Módulo 4.2** - Frameworks - Vue
 - **Módulo 5** - MetaFrameworks
   - Next.JS
+  - Nuxt
