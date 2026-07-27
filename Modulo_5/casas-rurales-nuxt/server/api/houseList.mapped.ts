@@ -24,6 +24,5 @@ export const mapHouseListToVM = (
         : 0,
     totalReviews: house.reviews?.length ?? 0,
   }));
-
   return data.length > 0 ? data : createEmptyHouseListToVM();
 };

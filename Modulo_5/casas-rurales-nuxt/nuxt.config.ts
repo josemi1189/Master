@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     viewTransition: true,
   },
   runtimeConfig: {
-    baseApiUrl: "",
-    basePicturesUrl: "",
+    baseApiUrl: process.env.BASE_API_URL,
+    basePicturesUrl: process.env.BASE_PICTURES_URL,
   },
 });
