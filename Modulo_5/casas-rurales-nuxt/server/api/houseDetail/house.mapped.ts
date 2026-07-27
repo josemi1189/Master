@@ -1,17 +1,18 @@
-import type * as API from "../../app/types/house.modelAPI";
-import type { House } from "@/types/house";
-import { createEmptyHouseListToVM } from "@/utils/house.empty";
+import type * as API from "../../../app/types/house.modelAPI";
+import type { HouseDetails } from "@/types/houseDetails";
+import { createEmptyHouseDetailToVM } from "@/utils/house.empty";
 
 export const mapHouseListToVM = (
-  houseList: API.House[],
+  house: API.House,
   basePicturesUrl: string,
-): House[] => {
-  const data: House[] = houseList.map((house) => ({
+): HouseDetails => {
+  const data: HouseDetails = {
     id: String(house.id),
     name: house.name,
     description: house.description,
     address: house.address,
     city: house.city,
+    country: house.country,
     price: house.price,
     image: `${basePicturesUrl ?? ""}${house.image}`,
     bedrooms: house.bedrooms,
@@ -22,7 +23,8 @@ export const mapHouseListToVM = (
         ? house.reviews.reduce((total, review) => total + review.rating, 0) /
           house.reviews.length
         : 0,
-    totalReviews: house.reviews?.length ?? 0,
-  }));
-  return data.length > 0 ? data : createEmptyHouseListToVM();
+    amenities: house.amenities,
+    reviews: house.reviews,
+  };
+  return data ? data : createEmptyHouseDetailToVM();
 };

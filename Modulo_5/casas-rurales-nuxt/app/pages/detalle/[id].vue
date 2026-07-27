@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import HouseDetailPod from "~/pods/HouseDetail/HouseDetailPod.vue";
+
+definePageMeta({
+  layout: "details",
+});
+
 const route = useRoute();
 
 useSeoMeta({
@@ -8,4 +14,6 @@ useSeoMeta({
 });
 </script>
 
-<template>PÁGINA DE DETALLE {{ route.params.id }}</template>
+<template>
+  <HouseDetailPod :id="Number(route.params.id)" />
+</template>

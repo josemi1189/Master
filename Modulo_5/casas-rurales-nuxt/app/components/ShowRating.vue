@@ -12,7 +12,9 @@ defineProps<{
     class="rating"
   >
     <span v-for="i in 5" :key="i">
-      {{ i <= Math.floor(rating) ? "★" : "☆" }}
+      <IconsStarFill v-if="i <= Math.floor(rating)" />
+      <IconsStarHalf v-else-if="i < rating" />
+      <IconsStarEmpty v-else />
     </span>
     <span v-if="totalReviews">({{ totalReviews }})</span>
   </div>

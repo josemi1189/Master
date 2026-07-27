@@ -1,3 +1,4 @@
+<style lang="scss" src="./HouseList.scss" scoped></style>
 <script setup lang="ts">
 import Card from "./Card.vue";
 import type { House } from "@/types/house.ts";
@@ -18,9 +19,9 @@ const {
   data: houseList,
   pending,
   error,
-} = await useFetch<House[]>("/api/houses");
+} = await useFetch<House[]>("/api/houseList/houses");
 </script>
-<style lang="scss" src="./HouseList.scss" scoped></style>
+
 <template>
   <div class="container">
     <h1 class="title" v-if="!pending && !error">Encuentra tu casa rural</h1>
@@ -35,10 +36,4 @@ const {
   <section class="content" v-else>
     <Card v-for="house in houseList" :key="house.id" :house="house" />
   </section>
-  <!--<section class="style.content">
-    {filteredHouses.length ? ( filteredHouses.map((house) =>
-    <Card key="{house.id}" house="{house}" />) ) : (
-    <p class="style.notFound}">Sin resultados de búsqueda</p>
-    )}
-  </section>-->
 </template>

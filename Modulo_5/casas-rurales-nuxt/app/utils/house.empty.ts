@@ -1,4 +1,5 @@
 import type { House } from "~/types/house";
+import type { HouseDetails } from "~/types/houseDetails";
 
 export const createEmptyHouseListToVM = (): House[] => [
   {
@@ -16,3 +17,19 @@ export const createEmptyHouseListToVM = (): House[] => [
     totalReviews: 0,
   },
 ];
+
+export const createEmptyHouseDetailToVM = (): HouseDetails => ({
+  id: "",
+  name: "",
+  description: "",
+  address: "",
+  city: "",
+  price: 0,
+  image: "",
+  bedrooms: 0,
+  beds: 0,
+  bathrooms: 0,
+  rating: 0,
+  amenities: [],
+  reviews: [],
+});

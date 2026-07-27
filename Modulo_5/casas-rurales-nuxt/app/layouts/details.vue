@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import AppFooter from "./footer/AppFooter.vue";
 import LogoImage from "~/components/HeaderLogo.vue";
+import AppFooter from "./footer/AppFooter.vue";
 </script>
 
 <template>
   <header class="header">
     <LogoImage />
+    <NuxtLink to="/" aria-label="Página principal" class="link">
+      Inicio
+    </NuxtLink>
   </header>
-  <main>
-    <slot />
-  </main>
+  <main><slot /></main>
   <AppFooter />
 </template>
 
@@ -26,5 +27,20 @@ import LogoImage from "~/components/HeaderLogo.vue";
   justify-content: space-between;
   align-items: center;
   padding: 1em;
+
+  .link {
+    background: #ffffff;
+    color: $primary-color;
+    padding: 0.6em 1em;
+    border-radius: $radius;
+    box-shadow: $box-shadow;
+    font-weight: 700;
+    font-size: $fs-sm;
+
+    &:hover {
+      background: $primary-color;
+      color: #fff;
+    }
+  }
 }
 </style>
