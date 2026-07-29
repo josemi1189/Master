@@ -1,13 +1,22 @@
 <script setup lang="ts">
-/* De Input:
-  :checked="getIsReserve(houseID)"        
-  v-on:change={handleReserve(houseID)}
-*/
+import { useReservedStore } from "~/stores/reservedStore.ts";
+
+defineProps<{
+  houseId: string;
+}>();
+const { getIsReserve, handleReserves } = useReservedStore();
 </script>
 <template>
   <div>
     <label htmlFor="reserved" className="{style.label}"> Reservada </label>
-    <input id="reserved" type="checkbox" value="Reservado" className="check" />
+    <input
+      id="reserved"
+      type="checkbox"
+      value="Reservado"
+      class="check"
+      :checked="getIsReserve(houseId)"
+      @change="handleReserves(houseId)"
+    />
   </div>
 </template>
 <style lang="scss" scoped>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   rating: number;
   totalReviews?: number;
 }>();
+const fullStars = Math.floor(props.rating);
+const hasHalfStar = props.rating % 1 >= 0.5;
 </script>
 
 <template>
@@ -12,8 +14,8 @@ defineProps<{
     class="rating"
   >
     <span v-for="i in 5" :key="i">
-      <IconsStarFill v-if="i <= Math.floor(rating)" />
-      <IconsStarHalf v-else-if="i < rating" />
+      <IconsStarFill v-if="i <= fullStars" />
+      <IconsStarHalf v-else-if="i === fullStars + 1 && hasHalfStar" />
       <IconsStarEmpty v-else />
     </span>
     <span v-if="totalReviews">({{ totalReviews }})</span>

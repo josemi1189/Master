@@ -70,7 +70,7 @@ const handleDebounceFilter = (text: string) => {
     color: #999;
 
     &:disabled {
-      cursor: not-allowed;
+      cursor: auto;
     }
   }
 }

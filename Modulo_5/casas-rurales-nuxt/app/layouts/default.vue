@@ -5,7 +5,10 @@ import LogoImage from "~/components/HeaderLogo.vue";
 
 <template>
   <header class="header">
-    <LogoImage />
+    <div class="head">
+      <LogoImage />
+      <h1 class="title">Encuentra tu casa rural</h1>
+    </div>
   </header>
   <main>
     <slot />
@@ -23,8 +26,17 @@ import LogoImage from "~/components/HeaderLogo.vue";
   z-index: 1000;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   padding: 1em;
+
+  .head {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    .title {
+      font-size: $fs-xl;
+      font-weight: 900;
+    }
+  }
 }
 </style>

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   css: ["~/assets/css/main.scss"],
   devtools: { enabled: true },
-  modules: ["@nuxt/image"],
+  modules: ["@nuxt/image", "@pinia/nuxt"],
   vite: {
     css: {
       preprocessorOptions: {

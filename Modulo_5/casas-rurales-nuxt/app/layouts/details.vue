@@ -5,7 +5,10 @@ import AppFooter from "./footer/AppFooter.vue";
 
 <template>
   <header class="header">
-    <LogoImage />
+    <div class="head">
+      <LogoImage />
+      <h1 class="title">Encuentra tu casa rural</h1>
+    </div>
     <NuxtLink to="/" aria-label="Página principal" class="link">
       Inicio
     </NuxtLink>
@@ -27,6 +30,16 @@ import AppFooter from "./footer/AppFooter.vue";
   justify-content: space-between;
   align-items: center;
   padding: 1em;
+
+  .head {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    .title {
+      font-size: $fs-xl;
+      font-weight: 900;
+    }
+  }
 
   .link {
     background: #ffffff;

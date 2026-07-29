@@ -18,7 +18,7 @@ const { data: house } = await useFetch<HouseDetails>(
   <article class="container" v-if="house">
     <header class="head">
       <h1 class="houseName" tabIndex="{-1}">{{ house.name }}</h1>
-      <CheckReserve houseID="{house.id}" />
+      <CheckReserve :house-id="house.id" />
       <span>{{ house.price }} € / noche</span>
     </header>
     <section class="content">

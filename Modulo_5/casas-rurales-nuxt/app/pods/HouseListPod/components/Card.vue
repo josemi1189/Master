@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import ShowRating from "~/components/ShowRating.vue";
+import MarkReserved from "./MarkReserved.vue";
 import type { House } from "~/types/house";
+import { useReservedStore } from "~/stores/reservedStore";
 
-/*
-  const { getIsReserve } = useContextReserved();
-  */
-const isReserve = ref<boolean>(false); // getIsReserve(house.id);
-
-defineProps<{
+const props = defineProps<{
   house: House;
 }>();
+
+const { getIsReserve } = useReservedStore();
+const isReserve = getIsReserve(props.house.id);
 </script>
 <template>
   <article class="card">
@@ -17,16 +17,16 @@ defineProps<{
       :href="`/detalle/${house.id}`"
       aria-label="Ir a página de detalle de {{house.name}}"
     >
-      <div class="image">
+      <div class="imageContent">
         <NuxtImg
           :src="house.image"
           width="340"
           height="340"
-          class="isReserve"
+          :class="isReserve ? 'image isReserve' : 'image'"
           style="object-fit: cover"
           :alt="`${house.name}. Ubicada en ${house.address}, ${house.city}.`"
         />
-        <!--<MarkReserved v-if="isReserve" />-->
+        <MarkReserved v-if="isReserve" />
         <div class="rating">
           <ShowRating
             :rating="house.rating"
@@ -69,9 +69,9 @@ defineProps<{
   align-items: center;
   flex-grow: 1;
 
-  .image {
+  .imageContent {
     position: relative;
-    img {
+    .image {
       border-radius: $radius;
       mask-image: linear-gradient(to bottom, $background 60%, transparent 100%);
       -webkit-mask-image: linear-gradient(
