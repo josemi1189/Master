@@ -4,9 +4,10 @@ import { HouseDetailsPod } from "@/pods/house-details";
 import { getHouseDetailsById } from "@/pods/house-details/api/house-details.api";
 import { mapHouseDetailToVm } from "@/pods/house-details/house-detail.mapped";
 import { Metadata } from "next";
+import { getListingStatisParams } from "@/pods/house-details/actions/getStatisParams";
 
 export async function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+  return await getListingStatisParams({ LIMIT: 3 });
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
