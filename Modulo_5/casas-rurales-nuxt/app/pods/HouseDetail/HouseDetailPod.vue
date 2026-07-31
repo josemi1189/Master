@@ -7,12 +7,8 @@ import Details from "./components/Details.vue";
 import CheckReserve from "./components/CheckReserve.vue";
 
 const props = defineProps<{
-  id: number;
+  house: HouseDetails;
 }>();
-
-const { data: house } = await useFetch<HouseDetails>(
-  `/api/houseDetail/${props.id}`,
-);
 </script>
 <template>
   <article class="container" v-if="house">
@@ -24,7 +20,7 @@ const { data: house } = await useFetch<HouseDetails>(
     <section class="content">
       <NuxtImg :src="house.image" :alt="house.name" width="410" height="320" />
 
-      <Details :house="house" />
+      <Details :house="house" :key="house.id" />
     </section>
     <section class="amenities">
       <span v-for="label in house.amenities" :key="label" class="label">

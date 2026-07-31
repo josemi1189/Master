@@ -6,14 +6,15 @@ import HouseSearch from "~/components/HouseSearch.vue";
 import { useSearch } from "~/composable/search.ts";
 
 const { textSearch, updateSearch } = useSearch();
-const {
-  data: houseList,
-  pending,
-  error,
-} = await useFetch<House[]>("/api/houseList/houses");
+
+const props = defineProps<{
+  houses: House[];
+  pending: boolean;
+  error?: string;
+}>();
 
 const listFiltered = computed(() =>
-  houseList.value?.filter(
+  props.houses.filter(
     (house) =>
       house.name.toLowerCase().includes(String(textSearch.value)) ||
       house.city.toLowerCase().includes(String(textSearch.value)),
@@ -23,20 +24,24 @@ const listFiltered = computed(() =>
 
 <template>
   <div class="container">
-    <HouseSearch :filter="textSearch" :setFilter="updateSearch" />
+    <div class="search">
+      <HouseSearch :filter="textSearch" :setFilter="updateSearch" />
+    </div>
+    <section class="content">
+      <p v-if="pending" class="error">Cargando casas rurales...</p>
+      <p v-if="error" class="error">¡Ups! Ha ocurrido algún error...</p>
+      <p
+        v-if="!houses || (listFiltered && listFiltered.length === 0)"
+        class="error"
+      >
+        No encontramos lo que buscas
+      </p>
+      <Card
+        v-else
+        v-for="house in listFiltered"
+        :key="house.id"
+        :house="house"
+      />
+    </section>
   </div>
-  <section v-if="pending" class="content">Cargando casas rurales...</section>
-
-  <!-- Estado sin datos o error -->
-  <p
-    v-else-if="
-      error || !houseList || (listFiltered && listFiltered.length === 0)
-    "
-    class="notFound"
-  >
-    No encontramos lo que buscas
-  </p>
-  <section class="content" v-else>
-    <Card v-for="house in listFiltered" :key="house.id" :house="house" />
-  </section>
 </template>

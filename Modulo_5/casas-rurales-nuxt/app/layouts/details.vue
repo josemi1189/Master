@@ -4,17 +4,19 @@ import AppFooter from "./footer/AppFooter.vue";
 </script>
 
 <template>
-  <header class="header">
-    <div class="head">
-      <LogoImage />
-      <h1 class="title">Encuentra tu casa rural</h1>
-    </div>
-    <NuxtLink to="/" aria-label="Página principal" class="link">
-      Inicio
-    </NuxtLink>
-  </header>
-  <main><slot /></main>
-  <AppFooter />
+  <div>
+    <header class="header">
+      <div class="head">
+        <LogoImage />
+        <h1 class="title">Encuentra tu casa rural</h1>
+      </div>
+      <NuxtLink to="/" aria-label="Página principal" class="link">
+        Inicio
+      </NuxtLink>
+    </header>
+    <main><slot /></main>
+    <AppFooter />
+  </div>
 </template>
 
 <style lang="scss" scoped>

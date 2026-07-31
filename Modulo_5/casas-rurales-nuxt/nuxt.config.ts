@@ -15,10 +15,18 @@ export default defineNuxtConfig({
   },
 
   app: {
-    viewTransition: true,
+    pageTransition: {
+      name: "page",
+      mode: "out-in",
+      appear: true, // Activa la animación en la carga inicial
+    },
   },
   runtimeConfig: {
     baseApiUrl: process.env.BASE_API_URL,
     basePicturesUrl: process.env.BASE_PICTURES_URL,
+  },
+  routeRules: {
+    "/": { isr: 300 },
+    "/detalle/**": { isr: 200 },
   },
 });

@@ -14,7 +14,7 @@ const isReserve = getIsReserve(props.house.id);
 <template>
   <article class="card">
     <NuxtLink
-      :href="`/detalle/${house.id}`"
+      :to="`/detalle/${house.id}`"
       aria-label="Ir a página de detalle de {{house.name}}"
     >
       <div class="imageContent">
