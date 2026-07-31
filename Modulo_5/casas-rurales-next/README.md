@@ -72,10 +72,22 @@ Cada casa del listado puede navegarse a una vista de detalle, donde se muestra i
 
   Realiza una precarga al hacer la build de las tres primeras casas en este caso, que también podrían ser las más visitadas o mejor posicionadas.
 
-  ```tsx
+  ```ts
   export async function generateStaticParams() {
-    return [{ id: "1" }, { id: "2" }, { id: "3" }];
+    return await getListingStatisParams({ LIMIT: 3 });
   }
+  ```
+
+  ```ts
+  export const getListingStaticParams = async ({
+    LIMIT,
+  }: Props): Promise<IDs[]> => {
+    const url = `${ENV.BASE_API_URL}/houses`;
+    const response = await fetch(url)
+      .then((result) => result.json())
+      .then((data) => data.slice(0, LIMIT));
+    return response.map((result: IDs) => ({ id: result.id.toString() }));
+  };
   ```
 
   ISR pre-renderiza las páginas en tiempo de build para que carguen instantáneamente y actualiza su contenido en segundo plano en servidor si este cambia.

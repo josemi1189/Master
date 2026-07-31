@@ -11,7 +11,7 @@ interface IDs {
  * @param LIMIT :number Limit on the number of results returned
  * @returns {id: number}[]
  */
-export const getListingStatisParams = async ({
+export const getListingStaticParams = async ({
   LIMIT,
 }: Props): Promise<IDs[]> => {
   const url = `${ENV.BASE_API_URL}/houses`;
