@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import * as apiModel from "./api/house.model";
 import { House, createEmptyHouseDetailToVM } from "./house.vm";
 import { mapHouseDetailToVm } from "./house-detail.mapped";
+import { ENV } from "@/core/constants";
 
 describe("mapHouseDetailToVm", () => {
   const mockHouseData: apiModel.House = {
@@ -52,7 +53,7 @@ describe("mapHouseDetailToVm", () => {
       beds: 8,
       bathrooms: 2,
       price: 150,
-      image: "/images/casa-malaga.jpg",
+      image: `${ENV.BASE_PICTURES_URL}/images/casa-malaga.jpg`,
       amenities: ["Piscina", "WiFi", "Jardín", "Parking", "Cocina equipada"],
       reviews: [
         {

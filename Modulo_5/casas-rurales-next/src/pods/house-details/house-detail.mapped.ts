@@ -1,5 +1,6 @@
 import { createEmptyHouseDetailToVM, House } from "./house.vm";
 import { House as HouseApi } from "./api/house.model";
+import { ENV } from "@/core/constants";
 
 export const mapHouseDetailToVm = (apiData: HouseApi): House => {
   return Boolean(apiData)
@@ -14,7 +15,7 @@ export const mapHouseDetailToVm = (apiData: HouseApi): House => {
         beds: apiData.beds,
         bathrooms: apiData.bathrooms,
         price: apiData.price,
-        image: apiData.image,
+        image: `${ENV.BASE_PICTURES_URL}${apiData.image}`,
         amenities: apiData.amenities,
         reviews: apiData.reviews,
       }

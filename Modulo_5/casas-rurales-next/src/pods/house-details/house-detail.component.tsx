@@ -1,7 +1,6 @@
 import { House } from "./house.vm";
 import style from "./house-detail.module.scss";
 import Image from "next/image";
-import { ENV } from "@/core/constants";
 import { Details, CheckReserve } from "./components";
 import { ShowRating } from "@/components/show-rating";
 
@@ -21,7 +20,7 @@ export const HouseDetail: React.FC<Props> = ({ house }) => {
       <section className={style.content}>
         {house.image !== "" && (
           <Image
-            src={`${ENV.BASE_PICTURES_URL}${house.image}`}
+            src={house.image}
             alt={house.name}
             width={410}
             height={320}

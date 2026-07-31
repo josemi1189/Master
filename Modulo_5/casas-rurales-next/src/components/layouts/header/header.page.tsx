@@ -7,7 +7,10 @@ import { LogoImage } from "./logo-image";
 export const HeaderPage: React.FC = () => {
   return (
     <header className={style.header}>
-      <LogoImage />
+      <div className={style.head}>
+        <LogoImage />
+        <h1 className={style.title}>Encuentra tu casa rural</h1>
+      </div>
       <Link
         href={routes.home}
         aria-label="Página principal"

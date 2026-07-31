@@ -3,7 +3,6 @@ import React, { useMemo } from "react";
 import { Card } from "./components/card";
 import { House } from "./house.vm";
 import style from "./house-list.module.scss";
-
 import { HouseSearch } from "./components/house-search/house-search";
 import { useDebouncedSearch } from "@/hooks/useDebouncedSearch";
 
@@ -25,8 +24,9 @@ export const HouseList: React.FC<Props> = ({ houses }) => {
   return (
     <>
       <div className={style.container}>
-        <h1 className={style.title}>Encuentra tu casa rural</h1>
-        <HouseSearch search={search} setSearch={setSearch} />
+        <div className={style.search}>
+          <HouseSearch search={search} setSearch={setSearch} />
+        </div>
       </div>
       <section className={style.content}>
         {filteredHouses.length ? (
