@@ -72,38 +72,46 @@ Cada casa del listado puede navegarse a una vista de detalle, donde se muestra i
 
   Realiza una precarga al hacer la build de las tres primeras casas en este caso, que también podrían ser las más visitadas o mejor posicionadas.
 
-  ```ts
-  export async function generateStaticParams() {
-    return await getListingStatisParams({ LIMIT: 3 });
-  }
-  ```
+`/src/app/detalle/[id]/page.tsx`
 
-  ```ts
-  export const getListingStaticParams = async ({
-    LIMIT,
-  }: Props): Promise<IDs[]> => {
-    const url = `${ENV.BASE_API_URL}/houses`;
-    const response = await fetch(url)
-      .then((result) => result.json())
-      .then((data) => data.slice(0, LIMIT));
-    return response.map((result: IDs) => ({ id: result.id.toString() }));
-  };
-  ```
+```ts
+export async function generateStaticParams() {
+  return await getListingStatisParams({ LIMIT: 3 });
+}
+```
 
-  ISR pre-renderiza las páginas en tiempo de build para que carguen instantáneamente y actualiza su contenido en segundo plano en servidor si este cambia.
+`/src/app/pods/house-details/actions/getStaticParams.ts`
 
-  ```tsx
-  export const getHouseList = async (): Promise<API.House[]> => {
-    const url = `${ENV.BASE_API_URL}/houses`;
-    return await fetch(url, { next: { revalidate: 600 } }).then((response) =>
-      response.json(),
-    );
-  };
-  ```
+```ts
+export const getListingStaticParams = async ({
+  LIMIT,
+}: Props): Promise<IDs[]> => {
+  const url = `${ENV.BASE_API_URL}/houses`;
+  const response = await fetch(url)
+    .then((result) => result.json())
+    .then((data) => data.slice(0, LIMIT));
+  return response.map((result: IDs) => ({ id: result.id.toString() }));
+};
+```
+
+ISR pre-renderiza las páginas en tiempo de build para que carguen instantáneamente y actualiza su contenido en segundo plano en servidor si este cambia.
+
+`/src/app/pods/house-list/api/house-list.api.ts`
+
+```ts
+export const getHouseList = async (): Promise<API.House[]> => {
+  const url = `${ENV.BASE_API_URL}/houses`;
+  return await fetch(url, { next: { revalidate: 600 } }).then((response) =>
+    response.json(),
+  );
+};
+```
 
 - La página de detalle se prepara con generación estática para las rutas principales y renderizado incremental, lo que mejora la velocidad de carga y la escalabilidad.
 
-  ```tsx
+  `/src/app/pods/house-details/api/house-details.api.ts`
+
+  ```ts
   export const getHouseDetailsById = async (id: string): Promise<House> => {
     const url = `${ENV.BASE_API_URL}/houses/${id}`;
     const result = await fetch(url, { next: { revalidate: 300 } });
@@ -114,6 +122,8 @@ Cada casa del listado puede navegarse a una vista de detalle, donde se muestra i
 ### 5. Búsqueda en el listado
 
 Búsqueda que permite filtrar casas por nombre o ubicación, mejorando la navegación y la experiencia del usuario.
+
+`/src/app/pods/house-list/house-list.component.tsx`
 
 ```tsx
 const { search, setSearch, filterDebounce } = useDebouncedSearch();
@@ -132,8 +142,8 @@ const filteredHouses = useMemo(
 
 En la vista de detalle se incluye un botón para reservar una casa rural. La interacción está gestionada de forma sencilla mediante contexto y permite marcar visualmente si una propiedad ya ha sido reservada.
 
-![Check casa reservada](./docs/nextjs/reserved-check.jpg)
-![Casa reservada](./docs/nextjs/reserved-card.jpg)
+![Check casa reservada](./docs/reserved-check.jpg)
+![Casa reservada](./docs/reserved-card.jpg)
 
 ### 7. Optimización de imágenes
 
