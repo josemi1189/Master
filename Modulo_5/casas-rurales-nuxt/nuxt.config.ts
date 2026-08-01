@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     basePicturesUrl: process.env.BASE_PICTURES_URL,
   },
   routeRules: {
-    "/": { isr: 300 },
-    "/detalle/**": { isr: 200 },
+    "/": { isr: 120 },
+    "/detalle/**": { isr: 180 },
   },
 });
