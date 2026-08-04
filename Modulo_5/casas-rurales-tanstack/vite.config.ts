@@ -14,5 +14,15 @@ export default defineConfig({
     modules: {
       localsConvention: "camelCase",
     },
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@use "@/assets/css/variables" as *;',
+      },
+    },
+  },
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
   },
 });

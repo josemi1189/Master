@@ -14,7 +14,7 @@
     "strictNullChecks": true,
     "types": ["node", "vite/client"],
     "paths": {
-      "#*": ["./src/*"]
+      "@*": ["./src/*"]
     }
   },
   "include": ["./src/**/*", "config/test/config.d.ts"]
