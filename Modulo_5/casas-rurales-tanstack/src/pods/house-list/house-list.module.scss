@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .search {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3em;
+  justify-content: center;
+  padding: 3em 0;
+}
+.error {
+  font-size: $fs-3xl;
+  font-weight: bold;
+  font-family: $ff-title;
+  color: $color-700;
+}
