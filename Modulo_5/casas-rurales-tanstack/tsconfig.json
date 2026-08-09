@@ -8,14 +8,16 @@
     "sourceMap": true,
     "jsx": "react-jsx",
     "noLib": false,
-    "allowJs": true,
+    "allowJs": false,
+    "noEmit": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strictNullChecks": true,
     "types": ["node", "vite/client"],
     "paths": {
+      "#*": ["./src/*"],
       "@*": ["./src/*"]
     }
   },
-  "include": ["./src/**/*", "config/test/config.d.ts"]
+  "include": ["src", "src/**/*.scss"]
 }
