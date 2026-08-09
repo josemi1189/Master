@@ -1,75 +1,116 @@
-# React + TypeScript + Vite
+# Casas rurales - TanStack Start
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción del proyecto
 
-Currently, two official plugins are available:
+Aplicación desarrollada como parte del Máster Front End XIX - Módulo 5 - MetaFrameworks de LemonCode.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Uso de metaframeworks modernos y aplicar buenas prácticas de rendering, navegación, búsqueda y optimización de rendimiento en una web de casas rurales.
 
-## React Compiler
+La propuesta está enfocada en ofrecer una experiencia de usuario fluida, con dos pantallas principales: un listado de casas rurales y una vista de detalle para cada alojamiento.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Instalación y ejecución
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Variables de entorno necesarias:
 
 ```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+BASE_API_URL=http://localhost:3001/api
+VITE_BASE_PICTURES_URL=http://localhost:3001
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Instalación de dependencias:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   # Instalar dependencias del FrontEnd (raíz)
+   npm install
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+   ```bash
+   # Instalar dependencias de la API local
+   cd api-server
+   npm install
+   ```
 
+2. Iniciar api server
+
+   ```bash
+   cd /api-server
+   npm start
+   ```
+
+3. Iniciar la aplicación en modo desarrollo:
+
+   ```bash
+   # confirmar que se encuentre en la raíz del proyecto
+   npm run dev
+   ```
+
+4. Acceder a la aplicación en el navegador:
+   ```bash
+   http://localhost:5173
+   ```
+
+## Desafíos implementados
+
+### 1. Implementación con un metaframework: TanStack Start
+
+Desarrollado con TanStack Start, framework full-stack que permite trabajar con renderizado del lado del servidor y optimización automática de la aplicación utilizando librerías con React, Svelte o Vue.
+
+### 2. Pantalla de listado de casas rurales
+
+Implementada una pantalla inicial en la que se muestra un listado de las casas rurales disponibles. Cada tarjeta incluye información básica como nombre, ubicación, precio, una imagen destacada y una insignia si esa casa estuviera ya reservada.
+
+### 3. Pantalla de detalle de una casa rural
+
+Cada casa del listado puede navegarse a una vista de detalle, donde se muestra información más completa del alojamiento, como descripción, comodidades, reseñas y precio por noche.
+
+### 4. Rendering adecuado según la página
+
+#### PÁGINA PRINCIPAL
+
+ISR (Incremental Static Regeneration). Revalidación establecida en 10 minutos.
+
+`/src/pods/house-list/api/house-list.api.ts`
+
+```ts
+export const getHouseList = createServerFn().handler(async () => {
+  const baseUrl = getPrivateEnv().BASE_API_URL;
+  const response = await fetch(`${baseUrl}/houses`, {});
+
+  if (!response.ok) {
+    throw new Error(`Error ${response.status} al cargar casas`);
+  }
+
+  return response.json();
+});
+```
+
+`/src/routes/index.tsx`
+
+```ts
+export const Route = createFileRoute("/")({
+  loader: async () => API.getHouseList(),
+  headers: () => ({
+    "Cache-Control": "public, max-age=300, stale-while-revalidate=600",
+  }),
+  staleTime: 60_000, // 1 min
+  component: Home,
+});
+```
+
+**Caché de red a nivel HTTP**
+
+- **max-age:** Tiempo en segundos que considera como actualizados los datos antes de volver a hacer nuevo fetch
+
+- **stale-while-revalidate:** Tiempo en segundos que sigue sirviendo los datos después de superar `max-age` mientras los actualiza de nuevo.
+
+**Caché de aplicación**
+
+- **staleTime:** Tiempo en milisegundos. Caché de aplicación en navegación interna sin recarga de página completa.
+
+Precarga de las imágenes de los tres primeros resultados del listado con prioridad alta para que aparezcan lo antes posible; el resto con prioridad baja no bloquear el renderizado inicial.
+
+`/src/pods/house-list/components/card/card.tsx`
+
+```ts
+loading={index < 3 ? "eager" : "lazy"}
 ```

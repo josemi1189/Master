@@ -9,121 +9,78 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as homeRouteRouteImport } from './routes/(home)/route'
-import { Route as DetalleRouteRouteImport } from './routes/detalle/route'
-import { Route as homeIndexRouteImport } from './routes/(home)/index'
-import { Route as DetalleIndexRouteImport } from './routes/detalle/index'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as DetalleIdRouteImport } from './routes/detalle/$id'
 
-const homeRouteRoute = homeRouteRouteImport.update({
-  id: '/(home)',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DetalleRouteRoute = DetalleRouteRouteImport.update({
-  id: '/detalle',
-  path: '/detalle',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const homeIndexRoute = homeIndexRouteImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => homeRouteRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const DetalleIndexRoute = DetalleIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DetalleRouteRoute,
+const DetalleIdRoute = DetalleIdRouteImport.update({
+  id: '/detalle/$id',
+  path: '/detalle/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/detalle': typeof DetalleRouteRouteWithChildren
-  '/': typeof homeIndexRoute
-  '/detalle/': typeof DetalleIndexRoute
+  '/': typeof IndexRoute
+  '/detalle/$id': typeof DetalleIdRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof homeIndexRoute
-  '/detalle': typeof DetalleIndexRoute
+  '/': typeof IndexRoute
+  '/detalle/$id': typeof DetalleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/(home)': typeof homeRouteRouteWithChildren
-  '/detalle': typeof DetalleRouteRouteWithChildren
-  '/(home)/': typeof homeIndexRoute
-  '/detalle/': typeof DetalleIndexRoute
+  '/': typeof IndexRoute
+  '/detalle/$id': typeof DetalleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/detalle' | '/' | '/detalle/'
+  fullPaths: '/' | '/detalle/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/detalle'
-  id: '__root__' | '/(home)' | '/detalle' | '/(home)/' | '/detalle/'
+  to: '/' | '/detalle/$id'
+  id: '__root__' | '/' | '/detalle/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  homeRouteRoute: typeof homeRouteRouteWithChildren
-  DetalleRouteRoute: typeof DetalleRouteRouteWithChildren
+  IndexRoute: typeof IndexRoute
+  DetalleIdRoute: typeof DetalleIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/(home)': {
-      id: '/(home)'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof homeRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/detalle': {
-      id: '/detalle'
-      path: '/detalle'
-      fullPath: '/detalle'
-      preLoaderRoute: typeof DetalleRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(home)/': {
-      id: '/(home)/'
+    '/': {
+      id: '/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof homeIndexRouteImport
-      parentRoute: typeof homeRouteRoute
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/detalle/': {
-      id: '/detalle/'
-      path: '/'
-      fullPath: '/detalle/'
-      preLoaderRoute: typeof DetalleIndexRouteImport
-      parentRoute: typeof DetalleRouteRoute
+    '/detalle/$id': {
+      id: '/detalle/$id'
+      path: '/detalle/$id'
+      fullPath: '/detalle/$id'
+      preLoaderRoute: typeof DetalleIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface homeRouteRouteChildren {
-  homeIndexRoute: typeof homeIndexRoute
-}
-
-const homeRouteRouteChildren: homeRouteRouteChildren = {
-  homeIndexRoute: homeIndexRoute,
-}
-
-const homeRouteRouteWithChildren = homeRouteRoute._addFileChildren(
-  homeRouteRouteChildren,
-)
-
-interface DetalleRouteRouteChildren {
-  DetalleIndexRoute: typeof DetalleIndexRoute
-}
-
-const DetalleRouteRouteChildren: DetalleRouteRouteChildren = {
-  DetalleIndexRoute: DetalleIndexRoute,
-}
-
-const DetalleRouteRouteWithChildren = DetalleRouteRoute._addFileChildren(
-  DetalleRouteRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
-  homeRouteRoute: homeRouteRouteWithChildren,
-  DetalleRouteRoute: DetalleRouteRouteWithChildren,
+  IndexRoute: IndexRoute,
+  DetalleIdRoute: DetalleIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.ts'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
