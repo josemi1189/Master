@@ -19,7 +19,8 @@
     "@tanstack/react-start": "^1.168.39",
     "@unpic/react": "^1.0.2",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "use-debounce": "^10.1.1"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

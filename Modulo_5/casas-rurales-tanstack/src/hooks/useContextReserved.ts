@@ -1,5 +1,4 @@
-"use client";
-import { ReservesContext } from "@/contexts/reservesContext";
+import { ReservesContext } from "#contexts/reservesContext";
 import { useContext } from "react";
 
 export const useContextReserved = () => {

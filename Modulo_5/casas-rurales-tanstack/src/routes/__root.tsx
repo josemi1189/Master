@@ -9,6 +9,7 @@ import {
 import "@/assets/css/styles.scss";
 import { NotFound } from "#components/notFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReservesProvider } from "#contexts/reservesContext/reservesContext.js";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -26,7 +27,9 @@ function RootComponent() {
   return (
     <RootDocument>
       <QueryClientProvider client={queryClient}>
-        <Outlet />
+        <ReservesProvider>
+          <Outlet />
+        </ReservesProvider>
       </QueryClientProvider>
     </RootDocument>
   );

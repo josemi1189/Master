@@ -8,6 +8,5 @@ export const getHouseList = createServerFn().handler(async () => {
   if (!response.ok) {
     throw new Error(`Error ${response.status} al cargar casas`);
   }
-
   return response.json();
 });
