@@ -1,4 +1,4 @@
-import { getPrivateEnv } from "#constants/env.server.js";
+import { getPrivateEnv } from "#constants";
 import { createServerFn } from "@tanstack/react-start";
 
 export const getHouseList = createServerFn().handler(async () => {

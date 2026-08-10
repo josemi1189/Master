@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 100%;
+  background: $bg-secondary;
+  border-radius: $radius;
+  box-shadow: 0 0 8px 8px $bg-secondary;
+
+  @media (min-width: $viewport-sm) {
+    padding: 1.5em;
+  }
+  .head {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 0.4em;
+    @media (min-width: $viewport-xs) {
+      flex-direction: row;
+    }
+
+    .houseName {
+      font-size: $fs-2xl;
+      font-weight: 900;
+    }
+    span {
+      font-size: $fs-md;
+      font-weight: 600;
+      padding: 0.4em 0;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    font-size: $fs-xs;
+    align-items: center;
+
+    @media (min-width: $viewport-md) {
+      flex-direction: row;
+    }
+
+    img {
+      max-width: 99%;
+      border-radius: $radius;
+    }
+  }
+}
+
+.amenities {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+.label {
+  padding: 0.6em 1em;
+  background-color: $primary-color;
+  border-radius: 20px;
+  color: $text-secondary;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  .review {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 1px solid #777;
+    border-radius: $radius;
+    padding: 1em;
+
+    .head {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 2em;
+      font-size: $fs-md;
+      font-weight: 800;
+    }
+  }
+}
