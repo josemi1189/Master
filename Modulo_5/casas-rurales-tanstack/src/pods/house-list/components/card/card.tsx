@@ -5,6 +5,8 @@ import { BathroomsIcon, BedIcon, BedroomsIcon } from "#components/icons";
 import { Image } from "@unpic/react";
 import { Link } from "@tanstack/react-router";
 import { EAGER_IMAGE_LOAD_COUNT } from "#constants/constants.js";
+import { useContextReserved } from "#hooks/useContextReserved.js";
+import { ShowRating } from "#components/show-rating.js";
 interface Props {
   house: HouseVM;
   index: number;
@@ -12,9 +14,9 @@ interface Props {
 
 export const Card: React.FC<Props> = (props) => {
   const { house, index } = props;
-  //const { getIsReserve } = useContextReserved();
-  //const isReserve = getIsReserve(house.id);
-  const isReserve = false;
+  const { getIsReserve } = useContextReserved();
+  const isReserve = getIsReserve(house.id);
+
   return (
     <article className={style.card}>
       <Link
@@ -34,10 +36,10 @@ export const Card: React.FC<Props> = (props) => {
           />
           {isReserve && <MarkReserved />}
           <div className={style.rating}>
-            {/*<ShowRating
+            <ShowRating
               rating={house.rating}
               totalReviews={house.totalReviews}
-            />*/}
+            />
           </div>
         </div>
         <footer className={style.content}>
