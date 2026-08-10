@@ -26,9 +26,7 @@ function RootComponent() {
   return (
     <RootDocument>
       <QueryClientProvider client={queryClient}>
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
       </QueryClientProvider>
     </RootDocument>
   );

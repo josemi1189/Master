@@ -1,11 +1,10 @@
 import { House as HouseVM } from "#pods/house-list";
 import style from "./card.module.scss";
 import { MarkReserved } from "../reserved-marked";
-//import { useContextReserved } from "@/hooks/useContextReserved";
 import { BathroomsIcon, BedIcon, BedroomsIcon } from "#components/icons";
-//import { ShowRating } from "#components/show-rating";
 import { Image } from "@unpic/react";
 import { Link } from "@tanstack/react-router";
+import { EAGER_IMAGE_LOAD_COUNT } from "#constants/constants.js";
 interface Props {
   house: HouseVM;
   index: number;
@@ -22,6 +21,7 @@ export const Card: React.FC<Props> = (props) => {
         to="/detalle/$id"
         params={{ id: house.id }}
         aria-label={`Ir a página de detalle de ${house.name}`}
+        preload="intent"
       >
         <div className={style.image}>
           <Image
@@ -30,7 +30,7 @@ export const Card: React.FC<Props> = (props) => {
             height={340}
             className={isReserve ? style.isReserved : ""}
             alt={`${house.name}. Ubicada en ${house.address}, ${house.city}. ${isReserve ? "Estado: Reservada" : ""} `}
-            loading={index < 3 ? "eager" : "lazy"}
+            loading={index < EAGER_IMAGE_LOAD_COUNT ? "eager" : "lazy"}
           />
           {isReserve && <MarkReserved />}
           <div className={style.rating}>

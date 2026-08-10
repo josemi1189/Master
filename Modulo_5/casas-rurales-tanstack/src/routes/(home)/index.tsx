@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import * as API from "@/pods/house-list/api";
 import { mapHouseListToVM } from "@/pods/house-list/house-list.mapped.js";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/(home)/")({
   loader: async () => API.getHouseList(),
   headers: () => ({
     "Cache-Control": "public, max-age=300, stale-while-revalidate=600",

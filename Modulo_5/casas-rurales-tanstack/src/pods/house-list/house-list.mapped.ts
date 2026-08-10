@@ -1,6 +1,6 @@
 import { createEmptyHouseListToVM, type House } from "./house.vm";
 import type * as apiModel from "./api/house.api";
-import { ENV } from "#config/env.constants.js";
+import { ENV } from "#constants/constants.js";
 
 export const mapHouseListToVM = (houseList: apiModel.House[]): House[] => {
   return Boolean(houseList)
