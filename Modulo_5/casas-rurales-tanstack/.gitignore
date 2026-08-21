@@ -10,8 +10,6 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-*.local
-.env
 routeTree.gen.ts
 tsconfig.tsbuildinfo
 # Editor directories and files
@@ -24,3 +22,6 @@ tsconfig.tsbuildinfo
 *.njsproj
 *.sln
 *.sw?
+
+# env files (can opt-in for committing if needed)
+#.env*

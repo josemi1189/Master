@@ -18,7 +18,5 @@ logs
 .fleet
 .idea
 
-# Local env files
-.env
-.env.*
-!.env.example
+# env files (can opt-in for committing if needed)
+#.env*
