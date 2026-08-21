@@ -1,4 +1,4 @@
-import { getPrivateEnv } from "#constants";
+import { getPrivateEnv } from "#constants/env.server";
 import { createServerFn } from "@tanstack/react-start";
 import { mapHouseDetailToVm } from "../house-detail.mapped";
 

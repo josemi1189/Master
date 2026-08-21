@@ -10,13 +10,15 @@ import "@/assets/css/styles.scss";
 import { NotFound } from "#components/notFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReservesProvider } from "#contexts/reservesContext/reservesContext.js";
+import { SEO } from "#constants/constants.js";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Tanstack - Casas rurales" },
+      { title: SEO.sitename },
+      { description: SEO.description },
     ],
   }),
   notFoundComponent: () => <NotFound />,
