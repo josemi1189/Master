@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   sassOptions: {
     additionalData: "@use '@/assets/css/_variables.scss' as *;",
   },
-  allowedDevOrigins: ["localhost"],
   images: {
     dangerouslyAllowLocalIP: true,
     remotePatterns: [
