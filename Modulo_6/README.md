@@ -195,3 +195,108 @@ it('should call onAccept() when it clicks on "Aceptar" button', async () => {
     expect(props.onClose).toHaveBeenCalled();
   });
 ```
+
+<br>
+
+## Test del hook: useConfirmationDialog
+
+`/src/common/componentes/confirmation-dialog/confirmation-dialog.hook.ts`
+
+- Comprueba que se inicializa con `isOpen` en **false**.
+
+```ts
+it('should initialize with isOpen as false', () => {
+  //Arrange
+
+  // Act
+  const { result } = renderHook(() => useConfirmationDialog());
+
+  // Assert
+  expect(result.current.isOpen).toBe(false);
+});
+```
+
+- Comprueba que al abrir la ventana modal, `isOpen` cambia a **true** y establece los datos en `itemToDelete` correctamente.
+
+```ts
+it('should set isOpen to true and assign the ID and name to be deleted', () => {
+  // Arrange
+  const itemToDelete: Lookup = { id: '1', name: 'nombre' };
+  // Act
+  const { result } = renderHook(() => useConfirmationDialog());
+
+  act(() => {
+    result.current.onOpenDialog(itemToDelete);
+  });
+
+  // Assert
+  expect(result.current.isOpen).toEqual(true);
+  expect(result.current.itemToDelete).toEqual(itemToDelete);
+});
+```
+
+<br>
+
+> Cualquier modificación de estado se debe wrappear en `act(() => {})`.
+
+<br>
+
+- Comprueba que si se seleccionan dos items distintos, actualiza los datos al último seleccionado:
+
+```ts
+it('should update itemToDelete to the latest item when called multiple times in a row', () => {
+  // Arrange
+  const item1ToDelete: Lookup = { id: '1', name: 'nombre1' };
+  const item2ToDelete: Lookup = { id: '2', name: 'nombre2' };
+  // Act
+  const { result } = renderHook(() => useConfirmationDialog());
+
+  act(() => {
+    result.current.onOpenDialog(item1ToDelete);
+    result.current.onOpenDialog(item2ToDelete);
+  });
+
+  expect(result.current.itemToDelete).equal(item2ToDelete);
+});
+```
+
+- Comprueba que al llamar a `onClose` cambia el estado de `isOpen` a **false**.
+
+```ts
+it('should indicate that it is closed when calling onClose', () => {
+  // Arrange
+  const itemToDelete: Lookup = { id: '1', name: 'nombre' };
+  // Act
+  const { result } = renderHook(() => useConfirmationDialog());
+
+  act(() => {
+    result.current.onOpenDialog(itemToDelete);
+    result.current.onClose();
+  });
+
+  // Assert
+  expect(result.current.isOpen).toEqual(false);
+});
+```
+
+- Comprueba que al llamar a `onAccept` restaura los datos a valores vacíos y confirma que `isOpen` sigue estando en **true**.
+
+  > Es el componente quien llama a `onAccept` y `onClose` al pulsar el botón **Aceptar**.
+
+```ts
+it('should restore the option to delete during an empty search when calling `onAccept`, and not set `isOpen` to true', () => {
+  // Arrange
+  const itemToDelete: Lookup = { id: '1', name: 'nombre' };
+  // Act
+  const { result } = renderHook(() => useConfirmationDialog());
+
+  act(() => {
+    result.current.onOpenDialog(itemToDelete);
+    result.current.onAccept();
+  });
+
+  // Assert
+  expect(result.current.itemToDelete).toEqual(createEmptyLookup());
+  expect(result.current.isOpen).toBe(true);
+});
+```
