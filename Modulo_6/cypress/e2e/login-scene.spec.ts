@@ -33,7 +33,7 @@ describe('Login scene test', () => {
     cy.focused().should('have.attr', 'name', 'password');
   });
 
-  it('should show a loading spinner when the credentials are correct and it redirects to /submodule-list', () => {
+  it('should display a loading spinner when the credentials are correct and it redirects to /submodule-list', () => {
     // Arrange
     const user = 'admin';
     const password = 'test';
