@@ -1,302 +1,53 @@
 # Módulo 6 - React Testing
 
-## Test del mapper: project.mapper.ts
-
-`/src/pods/project/project.mapper.ts`
-
-**Datos mockeados de prueba**
-
-```ts
-const mockData: API.Project = {
-  id: '1',
-  name: 'Nombre',
-  isActive: true,
-  comments: 'Comentario',
-  externalId: '1234',
-  employees: [{ id: '1', employeeName: 'Nombre apellido', isAssigned: true }],
-};
-```
-
-- Comprueba salida correcta de los datos al pasar por el mapper:
-
-```ts
-it('should map Employee Summary to view model', () => {
-  //Arrange
-  const data: API.Project = mockData;
-  //Act
-  const result: viewModel.Project = mapProjectFromApiToVm(data);
-
-  //Assert
-  const expectResult: viewModel.Project = {
-    id: '1',
-    name: 'Nombre',
-    isActive: true,
-    comments: 'Comentario',
-    externalId: '1234',
-    employees: [{ id: '1', employeeName: 'Nombre apellido', isAssigned: true }],
-  };
-  expect(result).toEqual(expectResult);
-});
-```
-
-- Confirma que devuelva objeto de datos con valores vacíos si es undefined:
-
-```ts
-it('should return empty data when fill a undefined value', () => {
-  //Arrange
-  const data: API.Project = undefined!;
-  //Act
-  const result: viewModel.Project = mapProjectFromApiToVm(data);
-
-  //Assert
-  const expectResult: viewModel.Project = viewModel.createEmptyProject();
-  expect(result).toEqual(expectResult);
-});
-```
-
-- Confirma que devuelva objeto de datos con valores vacíos si es null:
-
-```ts
-it('should return empty data when fill a null value', () => {
-    //Arrange
-    const data: API.Project = null!;
-    //Act
-    const result: viewModel.Project = mapProjectFromApiToVm(data);
-    //Assert
-    const expectResult: viewModel.Project = viewModel.createEmptyProject();
-    expect(result).toEqual(expectResult);
-```
-
-<br>
-
-## Test del componente: ConfirmationDialogComponent
-
-`/src/common/componentes/confirmation-dialog/confirmation-dialog.component.tsx`
-
-Utilizada la librería testing-library (https://testing-library.com/).
-
-Props del componente declaradas:
-
-```ts
-const props: React.ComponentProps<typeof ConfirmationDialogComponent> = {
-  title: 'Título modal',
-  onAccept: () => {},
-  onClose: () => {},
-  labels: {
-    closeButton: 'Cancelar',
-    acceptButton: 'Aceptar',
-  },
-  isOpen: true,
-  children: 'Contenido modal',
-};
-```
-
-### Test generados
-
-- Comprueba que muestra el `título` de la modal recibido por props:
-
-```ts
-it('should display title', () => {
-  [...]
-
-  // Act
-    render(<ConfirmationDialogComponent {...props} />);
-
-    // Assert
-    const titleElement = screen.getByText('Título modal');
-    expect(titleElement).toBeInTheDocument();
-```
+El laboratorio lo hemos divido en dos secciones
 
-<br>
+- Obligatorio: si queréis simplemente practicar el mínimo de esta parte y aprobarla
+- Opcional: si queréis practicar a fondo y subir nota.
 
-- Comprueba que muestra el contenido recibido como `children`.
+**IMPORTANTE:** Esta práctica las tenéis que subir a vuestro repositorio de Github.
 
-```ts
- it('should display children content element', () => {
-  [...]
-  // Act
-    render(<ConfirmationDialogComponent {...props} />);
+## Introducción
 
-    // Assert
-    const contentElement = screen.getByText('Contenido modal');
-    expect(contentElement).toBeInTheDocument();
-```
+Partiendo del ejemplo 05-testing/01-react/05-real-project/00-boilerplate del repositorio.
 
-<br>
-Para facilitar esta tarea instalamos la librería `userEvent` que simula la interacción del usuario completa.
+### Pasos a seguir
 
-> `npm install --save-dev @testing-library/user-event`
+- Crear y clonar el repositorio donde entregaréis el laboratorio.
+- Copiar los ficheros de la carpeta [00-boilerplate](https://github.com/Lemoncode/master-frontend-lemoncode/tree/master/05-testing/01-react/05-real-project/00-boilerplate) al repositorio clonado en el paso anterior.
+- Subir esos ficheros tal cuál haciendo un commit/push en la rama `main`.
+- Crear nueva rama llamada `feature/laboratorio-testing-obligatorio`.
+- Implementar los ejercicios obligatorios.
+- Una vez lista la entrega, podéis crear una pull request desde la rama `feature/laboratorio-testing-obligatorio` hacia la rama `main` para que se vean los nuevos cambios.
+- Por último, entregar el laboratorio en el campus dejando dicha pull request abierta para su corrección.
 
-<br>
+## Obligatorio
 
-- Comprueba que existe el botón `Aceptar` y que al pulsar sobre el botón se ejecuta el método `onAccept`.
+Añadir tests al mapper `./src/pods/project/project.mapper.ts`.
 
-```ts
-it('should call onAccept() when it clicks on "Aceptar" button', async () => {
-    // Arrange
-    const props: React.ComponentProps<typeof ConfirmationDialogComponent> = {
-      title: 'Título modal',
-      onAccept: vi.fn(),
-      onClose: () => {},
-      labels: {
-        closeButton: 'Cancelar',
-        acceptButton: 'Aceptar',
-      },
-      isOpen: true,
-      children: 'Contenido modal',
-    };
+Añadir tests al componente `./src/common/components/confirmation-dialog/confirmation-dialog.component.tsx`.
 
-    // Act
-    render(<ConfirmationDialogComponent {...props} />);
+Añadir tests al hook `./src/common/components/confirmation-dialog/confirmation-dialog.hook.ts`.
 
-    const acceptButtonElement = screen.getByRole('button', {
-      name: /aceptar/i,
-    });
+**IMPORTANTE:**
 
-    // Assert
-    expect(acceptButtonElement).toBeInTheDocument();
+- Si es necesario, podéis instalar las librerias que necesitéis.
+- Si es necesario, se puede modificar el código original de la implementación, para poder cumplir con las pruebas de testing.
 
-    await userEvent.click(acceptButtonElement);
-    expect(props.onAccept).toHaveBeenCalled();
-  });
-```
+## Opcional
 
-<br>
-- Comprueba que existe el botón `Cancelar` y que al pulsar sobre el botón se ejecuta el método `onAccept`.
+Crear nueva rama llamada `feature/laboratorio-testing-opcional` partiendo de la rama anterior `feature/laboratorio-testing-obligatorio`.
 
-```ts
-  it('should call onClose() when it clicks on "Cancelar" button', async () => {
-    // Arrange
+**Desafios:**
 
-    const props: React.ComponentProps<typeof ConfirmationDialogComponent> = {
-      title: 'Título modal',
-      onAccept: () => {},
-      onClose: vi.fn(),
-      labels: {
-        closeButton: 'Cancelar',
-        acceptButton: 'Aceptar',
-      },
-      isOpen: true,
-      children: 'Contenido modal',
-    };
+- Añadir test al componente `./src/common/components/spinner/spinner.component.tsx`.
 
-    // Act
-    render(<ConfirmationDialogComponent {...props} />);
+- Añadir pipeline de CI (integración continua) con Github Actions, para los unit tests.
 
-    const closeButtonElement = screen.getByRole('button', {
-      name: /cancelar/i,
-    });
+- Añadir tests e2e usando Cypress de una `scene`. Podéis elegir cualquiera de las disponibles (login, submodule-list, employee-list, employee, project-list, project).
 
-    // Assert
-    expect(closeButtonElement).toBeInTheDocument();
-
-    await userEvent.click(closeButtonElement);
+- Añadir pipeline de CI (integración continua) con Github Actions para los e2e. Incluso podéis usar la misma pipeline que los unit tests
 
-    expect(props.onClose).toHaveBeenCalled();
-  });
-```
+Una vez completados los desafíos que queráis presentar, crear otra pull request nueva, pero esta vez desde la rama `feature/laboratorio-testing-opcional` hacia la rama `feature/laboratorio-testing-obligatorio`.
 
-<br>
-
-## Test del hook: useConfirmationDialog
-
-`/src/common/componentes/confirmation-dialog/confirmation-dialog.hook.ts`
-
-- Comprueba que se inicializa con `isOpen` en **false**.
-
-```ts
-it('should initialize with isOpen as false', () => {
-  //Arrange
-
-  // Act
-  const { result } = renderHook(() => useConfirmationDialog());
-
-  // Assert
-  expect(result.current.isOpen).toBe(false);
-});
-```
-
-- Comprueba que al abrir la ventana modal, `isOpen` cambia a **true** y establece los datos en `itemToDelete` correctamente.
-
-```ts
-it('should set isOpen to true and assign the ID and name to be deleted', () => {
-  // Arrange
-  const itemToDelete: Lookup = { id: '1', name: 'nombre' };
-  // Act
-  const { result } = renderHook(() => useConfirmationDialog());
-
-  act(() => {
-    result.current.onOpenDialog(itemToDelete);
-  });
-
-  // Assert
-  expect(result.current.isOpen).toEqual(true);
-  expect(result.current.itemToDelete).toEqual(itemToDelete);
-});
-```
-
-<br>
-
-> Cualquier modificación de estado se debe wrappear en `act(() => {})`.
-
-<br>
-
-- Comprueba que si se seleccionan dos items distintos, actualiza los datos al último seleccionado:
-
-```ts
-it('should update itemToDelete to the latest item when called multiple times in a row', () => {
-  // Arrange
-  const item1ToDelete: Lookup = { id: '1', name: 'nombre1' };
-  const item2ToDelete: Lookup = { id: '2', name: 'nombre2' };
-  // Act
-  const { result } = renderHook(() => useConfirmationDialog());
-
-  act(() => {
-    result.current.onOpenDialog(item1ToDelete);
-    result.current.onOpenDialog(item2ToDelete);
-  });
-
-  expect(result.current.itemToDelete).equal(item2ToDelete);
-});
-```
-
-- Comprueba que al llamar a `onClose` cambia el estado de `isOpen` a **false**.
-
-```ts
-it('should indicate that it is closed when calling onClose', () => {
-  // Arrange
-  const itemToDelete: Lookup = { id: '1', name: 'nombre' };
-  // Act
-  const { result } = renderHook(() => useConfirmationDialog());
-
-  act(() => {
-    result.current.onOpenDialog(itemToDelete);
-    result.current.onClose();
-  });
-
-  // Assert
-  expect(result.current.isOpen).toEqual(false);
-});
-```
-
-- Comprueba que al llamar a `onAccept` restaura los datos a valores vacíos y confirma que `isOpen` sigue estando en **true**.
-
-  > Es el componente quien llama a `onAccept` y `onClose` al pulsar el botón **Aceptar**.
-
-```ts
-it('should restore the option to delete during an empty search when calling `onAccept`, and not set `isOpen` to true', () => {
-  // Arrange
-  const itemToDelete: Lookup = { id: '1', name: 'nombre' };
-  // Act
-  const { result } = renderHook(() => useConfirmationDialog());
-
-  act(() => {
-    result.current.onOpenDialog(itemToDelete);
-    result.current.onAccept();
-  });
-
-  // Assert
-  expect(result.current.itemToDelete).toEqual(createEmptyLookup());
-  expect(result.current.isOpen).toBe(true);
-});
-```
+Así ya tendríamos 2 pull request abiertas para la corrección.
