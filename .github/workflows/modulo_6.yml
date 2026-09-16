@@ -11,7 +11,7 @@ on:
 
 # https://docs.github.com/es/actions/how-tos/write-workflows/choose-what-workflows-do/set-default-values-for-jobs
 jobs:
-  ci:
+  ci-vitest:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -26,7 +26,7 @@ jobs:
       - name: Test
         run: npm test -- --run
 
-  e2e:
+  e2e-cypress:
     runs-on: ubuntu-latest
     defaults:
       run:
