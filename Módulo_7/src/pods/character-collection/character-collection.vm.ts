@@ -3,7 +3,7 @@ interface LOCATION {
   url: string;
 }
 
-export interface CharacterEntityVm {
+export interface Character {
   id: string;
   name: string;
   status: string;
@@ -13,4 +13,14 @@ export interface CharacterEntityVm {
   image: string;
   url: string;
   location: LOCATION;
+}
+
+export interface CharacterEntityVM {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  results: Character[];
 }
