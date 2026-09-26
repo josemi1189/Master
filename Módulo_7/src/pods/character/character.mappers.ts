@@ -11,6 +11,7 @@ export const mapCharacterFromApiToVm = (
   city: character.location.name,
   species: character.species,
   status: character.status,
+  image: character.image,
 });
 
 export const mapCharacterFromVmToApi = (
@@ -24,4 +25,5 @@ export const mapCharacterFromVmToApi = (
     city: character.city,
     species: character.species,
     status: character.status,
+    image: character.image,
   }) as unknown as apiModel.ResultCharacters;
