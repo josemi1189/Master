@@ -26,13 +26,14 @@ const genderIcon = {
   male: <Male />,
   female: <Female />,
   unknown: <QuestionMark />,
+  genderless: <QuestionMark />,
 };
 
 export const CharacterCard: React.FunctionComponent<Props> = (props) => {
   const { character, onEdit, onDelete } = props;
 
   return (
-    <Card>
+    <Card className={classes.card}>
       <CardMedia
         image={character.image}
         title={character.name}
@@ -53,7 +54,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
         }}
         subheader={character.species}
       />
-      <CardContent>
+      <CardContent className={classes.cardContent}>
         <div className={classes.content}>
           <Typography variant="subtitle1" gutterBottom>
             <Typography
@@ -81,7 +82,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
           </Typography>
         </div>
       </CardContent>
-      <CardActions>
+      <CardActions className={classes.actions}>
         <IconButton onClick={() => onEdit(character.id)}>
           <EditIcon />
         </IconButton>

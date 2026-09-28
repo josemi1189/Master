@@ -23,6 +23,9 @@ export const container = css`
 export const content = css`
   min-width: 0;
   order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 
   @media (max-width: 767px) {
     order: 2;
@@ -46,4 +49,17 @@ export const imageContainer = css`
   @media (min-width: 768px) {
     justify-self: end;
   }
+`;
+export const genderContainer = css`
+  display: flex;
+  flex-direction: row;
+  gap: 3em;
+  padding: 2em 0;
+`;
+
+export const btnData = css`
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  padding: 2em 0;
 `;

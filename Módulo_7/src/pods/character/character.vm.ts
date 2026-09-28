@@ -3,9 +3,10 @@ export interface Character {
   name: string;
   species: string;
   gender: string;
-  city: string;
+  locationName: string;
   status: string;
   image: string;
+  episode: string[];
 }
 
 export const createEmptyCharacter = (): Character => ({
@@ -13,7 +14,8 @@ export const createEmptyCharacter = (): Character => ({
   name: '',
   species: '',
   gender: '',
-  city: '',
+  locationName: '',
   status: '',
   image: '',
+  episode: [''],
 });

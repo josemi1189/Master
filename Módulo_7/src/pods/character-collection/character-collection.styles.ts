@@ -6,10 +6,17 @@ export const root = css`
     margin-top: 2rem;
   }
 `;
+export const head = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
 export const list = css`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: 1fr;
   grid-row-gap: 2rem;
   grid-column-gap: 2rem;
   list-style: none;

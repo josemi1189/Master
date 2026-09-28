@@ -8,10 +8,11 @@ export const mapCharacterFromApiToVm = (
   id: character.id.toString(),
   name: character.name,
   gender: character.gender,
-  city: character.location.name,
+  locationName: character.location.name,
   species: character.species,
   status: character.status,
   image: character.image,
+  episode: character.episode,
 });
 
 export const mapCharacterFromVmToApi = (
@@ -22,8 +23,9 @@ export const mapCharacterFromVmToApi = (
     id: character.id,
     name: character.name,
     gender: character.gender,
-    city: character.city,
+    city: character.locationName,
     species: character.species,
     status: character.status,
     image: character.image,
+    episode: character.episode,
   }) as unknown as apiModel.ResultCharacters;

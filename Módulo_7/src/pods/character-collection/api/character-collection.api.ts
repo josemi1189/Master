@@ -4,11 +4,16 @@ import { mockCharacterCollection } from './character-collection.mock-data';
 
 let characterCollection = [...mockCharacterCollection];
 
-export const getCharacterCollection = async (): Promise<CharacterEntityApi> => {
+export const getCharacterCollection = async (
+  page: number = 1,
+  filterName: string = ''
+): Promise<CharacterEntityApi> => {
   const url = 'https://rickandmortyapi.com/api/character';
 
   try {
-    let response = await axios.get(url);
+    const response = await axios.get(url, {
+      params: { page, name: filterName },
+    });
     if (!response || response.status !== 200) {
       throw new Error(`Respuesta inválida: ${response?.status}`);
     }

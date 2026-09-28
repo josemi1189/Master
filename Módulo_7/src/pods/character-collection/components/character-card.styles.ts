@@ -5,6 +5,20 @@ export const content = css`
   flex-direction: column;
 `;
 
+export const card = css`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+export const cardContent = css`
+  flex-grow: 1;
+`;
+
+export const actions = css`
+  margin-top: auto;
+`;
+
 export const alive = css`
   padding: 0.1em 0.5em;
   border-radius: 15px;

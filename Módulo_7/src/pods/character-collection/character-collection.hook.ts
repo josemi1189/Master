@@ -7,12 +7,13 @@ export const useCharacterCollection = () => {
   const [characterCollection, setCharacterCollection] =
     React.useState<CharacterEntityVM>();
 
-  const loadCharacterCollection = () => {
-    getCharacterCollection().then((result) => {
-      console.log('DEBUUG: ', result);
-      setCharacterCollection(mapCharacterCollectionFromApiToVm(result));
-    });
-  };
-
+  const loadCharacterCollection = React.useCallback(
+    (page: number = 1, name: string = '') => {
+      getCharacterCollection(page, name).then((result) => {
+        setCharacterCollection(mapCharacterCollectionFromApiToVm(result));
+      });
+    },
+    []
+  );
   return { characterCollection, loadCharacterCollection };
 };

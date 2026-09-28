@@ -5,76 +5,109 @@ import { TextFieldComponent } from '#common/components';
 import { formValidation } from './character.validations';
 import { Character } from './character.vm';
 import * as classes from './character.styles';
-import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+} from '@mui/material';
+import { ModalData } from './components/episodes-modal/episodes-modal.container';
 
 interface Props {
   character: Character;
   onSave: (character: Character) => void;
 }
 
+export const DataModal: React.FC = () => {
+  return <div>Ventana modal</div>;
+};
+
 export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
   const { character, onSave } = props;
-  console.log('src: ', character);
+
+  const episodesId: string[] = character.episode.map(
+    (url) => url.split('/').pop() || ''
+  );
+
   return (
-    <Formik
-      onSubmit={onSave}
-      initialValues={character}
-      enableReinitialize={true}
-      validate={formValidation.validateForm}
-    >
-      {({ values, handleChange }) => (
-        <Form className={classes.root}>
-          <div className={classes.container}>
-            <div className={classes.content}>
-              <TextFieldComponent name="name" label="Name" />
-              <TextFieldComponent name="species" label="Species" />
-              <TextFieldComponent name="city" label="City" />
-              <TextFieldComponent name="status" label="Status" />
-
-              <RadioGroup
-                aria-labelledby="gender"
-                defaultValue="no-say"
-                value={values.gender}
-                name="gender"
-              >
-                <FormControlLabel
-                  value="Female"
-                  control={<Radio />}
-                  label="Female"
+    <>
+      <Formik
+        onSubmit={onSave}
+        initialValues={character}
+        enableReinitialize={true}
+        validate={formValidation.validateForm}
+      >
+        {({ values, handleChange }) => (
+          <Form className={classes.root}>
+            <div className={classes.container}>
+              <div className={classes.content}>
+                <TextFieldComponent name="name" label="Name" />
+                <TextFieldComponent name="species" label="Species" />
+                <TextFieldComponent name="locationName" label="Location" />
+                <FormControl>
+                  <InputLabel variant="outlined" htmlFor="status">
+                    Status
+                  </InputLabel>
+                  <Select
+                    labelId="status"
+                    value={character.status}
+                    name="status"
+                    label="Status"
+                  >
+                    <MenuItem value={'Alive'}>Alive</MenuItem>
+                    <MenuItem value={'Dead'}>Dead</MenuItem>
+                    <MenuItem value={'unknown'}>unknown</MenuItem>
+                  </Select>
+                </FormControl>
+                <Box component={'div'} className={classes.genderContainer}>
+                  <RadioGroup
+                    aria-labelledby="gender"
+                    defaultValue="no-say"
+                    value={values.gender}
+                    name="gender"
+                  >
+                    <FormControlLabel
+                      value="Female"
+                      control={<Radio />}
+                      label="Female"
+                    />
+                    <FormControlLabel
+                      value="Male"
+                      control={<Radio />}
+                      label="Male"
+                    />
+                    <FormControlLabel
+                      value="unknown"
+                      control={<Radio />}
+                      label="I prefer not to say"
+                    />
+                  </RadioGroup>
+                  <div className={classes.btnData}>
+                    <ModalData
+                      episodes={episodesId}
+                      characterName={character.name}
+                    />
+                  </div>
+                </Box>
+                <Button type="submit" variant="contained" color="primary">
+                  Save
+                </Button>
+              </div>
+              <div className={classes.imageContainer}>
+                <Box
+                  component="img"
+                  src={character.image || 'Rick-and-Morty.webp'}
+                  alt={character.name}
                 />
-                <FormControlLabel
-                  value="Male"
-                  control={<Radio />}
-                  label="Male"
-                />
-                <FormControlLabel
-                  value="unknown"
-                  control={<Radio />}
-                  label="I prefer not to say"
-                />
-              </RadioGroup>
-
-              <Button type="submit" variant="contained" color="primary">
-                Save
-              </Button>
+              </div>
             </div>
-            <div className={classes.imageContainer}>
-              <Box
-                component="img"
-                src={character.image || 'Rick-and-Morty.webp'}
-                alt={character.name}
-                sx={{
-                  width: 300,
-                  height: 300,
-                  borderRadius: 2,
-                  boxShadow: 3,
-                  objectFit: 'cover',
-                }}
-              />
-            </div>
-          </div>
-        </Form>
-      )}
-    </Formik>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };
