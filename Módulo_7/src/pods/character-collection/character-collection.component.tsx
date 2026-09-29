@@ -55,6 +55,7 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
           </Button>
           <Box
             component={'input'}
+            name="filter"
             aria-label="Name filter"
             placeholder="Filter by name"
             sx={{ borderRadius: '6px', padding: '0.5em 1em' }}

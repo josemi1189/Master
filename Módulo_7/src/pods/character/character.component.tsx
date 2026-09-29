@@ -49,13 +49,14 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
                 <TextFieldComponent name="species" label="Species" />
                 <TextFieldComponent name="locationName" label="Location" />
                 <FormControl>
-                  <InputLabel variant="outlined" htmlFor="status">
+                  <InputLabel variant="outlined" id="status-label">
                     Status
                   </InputLabel>
                   <Select
-                    labelId="status"
+                    labelId="status-label"
                     value={character.status}
                     name="status"
+                    id="status"
                     label="Status"
                   >
                     <MenuItem value={'Alive'}>Alive</MenuItem>

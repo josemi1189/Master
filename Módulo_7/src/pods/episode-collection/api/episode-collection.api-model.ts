@@ -17,8 +17,3 @@ export interface EpisodeEntityApi {
   };
   results: Episode[];
 }
-
-export interface CharacterName {
-  id: string;
-  name: string;
-}

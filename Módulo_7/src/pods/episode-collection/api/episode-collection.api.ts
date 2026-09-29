@@ -1,8 +1,5 @@
 import axios from 'axios';
-import {
-  CharacterName,
-  EpisodeEntityApi,
-} from './episode-collection.api-model';
+import { EpisodeEntityApi } from './episode-collection.api-model';
 import * as CONSTANT from '#constants';
 
 export const getEpisodeCollection = async (
@@ -21,7 +18,7 @@ export const getEpisodeCollection = async (
     throw new Error('Ha habido un error de conexión', error);
   }
 };
-
+/*
 export const getCharacterNameById = async (ids: string[]) => {
   if (ids.length === 0) return [];
 
@@ -35,4 +32,4 @@ export const getCharacterNameById = async (ids: string[]) => {
   } catch (error) {
     throw new Error('Ha habido un error de conexión', error);
   }
-};
+};*/
