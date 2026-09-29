@@ -1,18 +1,17 @@
 import React from 'react';
-import { EpisodeEntity } from './episode-collection.vm';
-import * as classes from './episode-collection.styles';
+import * as VM from './location-collection.vm';
+import * as classes from './location-collection.styles';
 import { Pagination } from '@mui/material';
 import { CharacterList } from '#common/components';
 
 interface Props {
-  episodeCollection: EpisodeEntity;
+  locationCollection: VM.LocationEntity;
   charactersById: Record<string, string>;
   currentPage: number;
   onChangePage: (page: number) => void;
 }
-
-export const EpisodeCollectionComponent: React.FC<Props> = (props) => {
-  const { episodeCollection, charactersById, currentPage, onChangePage } =
+export const LocationCollectionComponent: React.FC<Props> = (props) => {
+  const { locationCollection, charactersById, currentPage, onChangePage } =
     props;
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     onChangePage(value);
@@ -21,28 +20,28 @@ export const EpisodeCollectionComponent: React.FC<Props> = (props) => {
   return (
     <>
       <section>
-        <h1>Episodes</h1>
+        <h1>Locations</h1>
         <ul className={classes.list}>
-          {episodeCollection.results.map((episode) => (
-            <li key={episode.id} className={classes.card}>
+          {locationCollection.results.map((location) => (
+            <li key={location.id} className={classes.card}>
               <div className={classes.row}>
-                <span>Code:</span>
-                <span className={classes.episode}>{episode.episode}</span>
+                <span>Type:</span>
+                <span className={classes.type}>{location.type}</span>
               </div>
               <div className={classes.title}>
-                <span>{episode.name}</span>
+                <span>{location.name}</span>
               </div>
               <div>
-                <span className={classes.date}>Date of issue:</span>
-                <span>{episode.airDate}</span>
+                <span className={classes.date}>Dimension:</span>
+                <span>{location.dimension}</span>
               </div>
               <div>
                 <span className={classes.date}>Created:</span>
-                <span>{episode.created}</span>
+                <span>{location.created}</span>
               </div>
               <CharacterList
-                titleAccordion="Characters"
-                characters={episode.characters}
+                titleAccordion="Residents"
+                characters={location.residents}
                 charactersById={charactersById}
               />
             </li>
@@ -51,7 +50,7 @@ export const EpisodeCollectionComponent: React.FC<Props> = (props) => {
       </section>
       <div className={classes.pagination}>
         <Pagination
-          count={episodeCollection.info.pages}
+          count={locationCollection.info.pages}
           page={currentPage}
           onChange={handleChange}
         />

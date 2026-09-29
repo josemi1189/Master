@@ -19,6 +19,7 @@ export const characters = css`
       text-decoration: none;
       color: #000;
       cursor: pointer;
+      padding: 0.5em;
     }
   }
 `;

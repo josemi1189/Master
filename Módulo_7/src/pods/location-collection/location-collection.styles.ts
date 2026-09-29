@@ -51,6 +51,6 @@ export const date = css`
   padding-right: 0.5em;
 `;
 
-export const episode = css`
+export const type = css`
   color: #666;
 `;

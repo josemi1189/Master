@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { EpisodeEntityApi } from './episode-collection.api-model';
+import * as API from './location-collection.api-model';
 import * as CONSTANT from '#constants';
 
-export const getEpisodeCollection = async (
+export const getLocationCollection = async (
   page: number = 1,
   filterName: string = ''
-): Promise<EpisodeEntityApi> => {
+): Promise<API.LocationEntity> => {
   try {
-    const response = await axios.get(CONSTANT.urlEpisode, {
+    const response = await axios.get(CONSTANT.urlLocation, {
       params: { page },
     });
     if (!response || response.status !== 200) {
