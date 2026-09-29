@@ -77,6 +77,7 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
       </section>
       <div className={classes.pagination}>
         <Pagination
+          siblingCount={0}
           count={characterCollection.info.pages}
           page={page}
           onChange={handleChange}

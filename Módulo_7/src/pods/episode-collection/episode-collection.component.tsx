@@ -51,6 +51,7 @@ export const EpisodeCollectionComponent: React.FC<Props> = (props) => {
       </section>
       <div className={classes.pagination}>
         <Pagination
+          siblingCount={0}
           count={episodeCollection.info.pages}
           page={currentPage}
           onChange={handleChange}

@@ -50,6 +50,7 @@ export const LocationCollectionComponent: React.FC<Props> = (props) => {
       </section>
       <div className={classes.pagination}>
         <Pagination
+          siblingCount={0}
           count={locationCollection.info.pages}
           page={currentPage}
           onChange={handleChange}

@@ -35,5 +35,5 @@ export const pagination = css`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 2rem auto 0;
+  padding: 2em 0;
 `;
