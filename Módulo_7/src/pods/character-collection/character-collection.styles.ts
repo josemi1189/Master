@@ -31,3 +31,9 @@ export const list = css`
     grid-template-columns: repeat(3, 1fr);
   }
 `;
+export const pagination = css`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem auto 0;
+`;

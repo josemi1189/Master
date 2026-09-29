@@ -43,36 +43,44 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
   }
 
   return (
-    <div className={classes.root}>
-      <div className={classes.head}>
-        <Button variant="contained" color="primary" onClick={onCreateCharacter}>
-          Add character
-        </Button>
-        <Box
-          component={'input'}
-          aria-label="Name filter"
-          placeholder="Filter by name"
-          sx={{ borderRadius: '6px', padding: '0.5em 1em' }}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+    <>
+      <section className={classes.root}>
+        <div className={classes.head}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={onCreateCharacter}
+          >
+            Add character
+          </Button>
+          <Box
+            component={'input'}
+            aria-label="Name filter"
+            placeholder="Filter by name"
+            sx={{ borderRadius: '6px', padding: '0.5em 1em' }}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <ul className={classes.list}>
+          {characterCollection.results.map((character) => (
+            <li key={character.id}>
+              <CharacterCard
+                character={character}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
+      <div className={classes.pagination}>
+        <Pagination
+          count={characterCollection.info.pages}
+          page={page}
+          onChange={handleChange}
         />
       </div>
-      <ul className={classes.list}>
-        {characterCollection.results.map((character) => (
-          <li key={character.id}>
-            <CharacterCard
-              character={character}
-              onEdit={onEdit}
-              onDelete={onDelete}
-            />
-          </li>
-        ))}
-      </ul>
-      <Pagination
-        count={characterCollection.info.pages}
-        page={page}
-        onChange={handleChange}
-      />
-    </div>
+    </>
   );
 };

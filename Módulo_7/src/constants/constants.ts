@@ -1,1 +1,2 @@
-export const urlEpisode = 'https://rickandmortyapi.com/api/episode/';
+export const urlEpisode = 'https://rickandmortyapi.com/api/episode';
+export const urlCharacter = 'https://rickandmortyapi.com/api/character';

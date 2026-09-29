@@ -34,7 +34,9 @@ export const CharacterCollectionContainer = () => {
   };
 
   const handleCurrentPage = (page: number) => {
-    setCurrentPage(page);
+    page < characterCollection.info.pages
+      ? setCurrentPage(page)
+      : setCurrentPage(1);
   };
 
   return (
