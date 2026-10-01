@@ -9,3 +9,6 @@
 - **Módulo 5** - MetaFrameworks
   - Next.JS
   - Nuxt
+  - TansTack
+- **Módulo 6** - React Unit Testing
+- **Módulo 7** - REST API
