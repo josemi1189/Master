@@ -44,7 +44,6 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
   const episodesId: string[] = character.episode.map(
     (url) => url.split('/').pop() || ''
   );
-  console.log(character);
 
   const buttonConfig = isSave
     ? saveButtonConfig[isSave]
