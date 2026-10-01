@@ -5,10 +5,12 @@
 - **Módulo 2** - JavaScript / TypeScript
 - **Módulo 3** - Layout - Bundling (Vite / Webpack)
 - **Módulo 4.1** - Frameworks - React
-- **Módulo 4.2** - Frameworks - Vue
+- **Módulo 4.2** - Frameworks - Angular
+- **Módulo 4.3** - Frameworks - Vue
 - **Módulo 5** - MetaFrameworks
   - Next.JS
   - Nuxt
   - TansTack
 - **Módulo 6** - React Unit Testing
 - **Módulo 7** - REST API
+- **Módulo 8** - Cloud
