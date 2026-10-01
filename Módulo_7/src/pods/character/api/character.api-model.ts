@@ -19,6 +19,7 @@ export interface ResultCharacters {
   episode: string[];
   url: string;
   created: string;
+  bestSentence?: string;
 }
 
 export interface CharacterEntityApi {

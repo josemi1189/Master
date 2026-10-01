@@ -1,1 +1,1 @@
-export * from './episodes-modal/episodes-modal.container';
+export * from './episodes-modal';

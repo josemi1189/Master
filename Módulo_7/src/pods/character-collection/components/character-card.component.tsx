@@ -80,13 +80,21 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
             <span className={classes.textBold}>Location: </span>
             <span>{character.location.name}</span>
           </Typography>
+          {character.bestSentence !== '' && (
+            <Typography variant="subtitle1" gutterBottom>
+              <span className={classes.textBold}>Best sentence: </span>
+              <span style={{ fontStyle: 'italic' }}>
+                "{character.bestSentence}"
+              </span>
+            </Typography>
+          )}
         </div>
       </CardContent>
       <CardActions className={classes.actions}>
-        <IconButton onClick={() => onEdit(character.id)}>
+        <IconButton onClick={() => onEdit(character.id.toString())}>
           <EditIcon />
         </IconButton>
-        <IconButton onClick={() => onDelete(character.id)}>
+        <IconButton onClick={() => onDelete(character.id.toString())}>
           <DeleteIcon />
         </IconButton>
       </CardActions>

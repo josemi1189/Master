@@ -4,7 +4,7 @@ import {
   EpisodeEntity,
 } from './episode-collection.vm';
 import { getEpisodeCollection } from './api';
-import { mapLocationCollectionFromApiToVm } from './episode-collection.mapper';
+import { mapEpisodeCollectionFromApiToVm } from './episode-collection.mapper';
 
 export const useEpisodeCollection = () => {
   const [episodeCollection, setEpisodeCollection] =
@@ -12,7 +12,7 @@ export const useEpisodeCollection = () => {
 
   const loadEpisodeCollection = React.useCallback(async (page: number = 1) => {
     const result = await getEpisodeCollection(page);
-    setEpisodeCollection(mapLocationCollectionFromApiToVm(result));
+    setEpisodeCollection(mapEpisodeCollectionFromApiToVm(result));
   }, []);
 
   return { episodeCollection, loadEpisodeCollection };

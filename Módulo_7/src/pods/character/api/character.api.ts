@@ -1,10 +1,9 @@
 import { ResultCharacters } from './character.api-model';
-import { Lookup } from '#common/models';
-import { mockCharacterCollection } from './character.mock-data';
+import * as CONSTANT from '#constants';
 import axios from 'axios';
 
 export const getCharacter = async (id: string): Promise<ResultCharacters> => {
-  const url = `https://rickandmortyapi.com/api/character/${id}`;
+  const url = `${CONSTANT.localUrlCharacter}/${id}`;
 
   try {
     let response = await axios.get(url);
@@ -20,5 +19,15 @@ export const getCharacter = async (id: string): Promise<ResultCharacters> => {
 export const saveCharacter = async (
   character: ResultCharacters
 ): Promise<boolean> => {
-  return true;
+  const url = `${CONSTANT.localUrlCharacter}/${character.id}`;
+
+  try {
+    const response = await axios.put(url, character);
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(`Respuesta inválida: ${response?.status}`);
+    }
+    return true;
+  } catch (error) {
+    throw new Error('Ha habido un error de conexión', error);
+  }
 };

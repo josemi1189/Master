@@ -14,6 +14,7 @@ interface Props {
 export const EpisodeCollectionComponent: React.FC<Props> = (props) => {
   const { episodeCollection, charactersById, currentPage, onChangePage } =
     props;
+
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     onChangePage(value);
   };

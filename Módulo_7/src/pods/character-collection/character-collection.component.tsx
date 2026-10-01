@@ -1,13 +1,17 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { CharacterEntityVM } from './character-collection.vm';
+import { Character, CharacterListResponse } from './character-collection.vm';
 import { CharacterCard } from './components/character-card.component';
 import * as classes from './character-collection.styles';
 import { Box, Pagination } from '@mui/material';
-import { useDebounce } from 'use-debounce';
+//import { Pagination } from '#common/components/pagination';
 
 interface Props {
-  characterCollection?: CharacterEntityVM;
+  characterCollection?: CharacterListResponse;
+  visibleCharacters: Character[];
+  currentPage: number;
+  totalPages: number;
+  search: string;
   onCreateCharacter: () => void;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
@@ -20,24 +24,17 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
 ) => {
   const {
     characterCollection,
+    visibleCharacters,
+    currentPage,
+    totalPages,
+    search,
     onCreateCharacter,
     onEdit,
     onDelete,
     onChangePage,
     onChangeFilter,
   } = props;
-  const [page, setPage] = React.useState(1);
-  const [search, setSearch] = React.useState<string>('');
-  const [debounceSearch] = useDebounce(search, 1000);
 
-  React.useEffect(() => {
-    onChangeFilter(debounceSearch);
-  }, [debounceSearch]);
-
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-    onChangePage(value);
-  };
   if (!characterCollection) {
     return <div>Cargando personajes...</div>;
   }
@@ -60,11 +57,11 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
             placeholder="Filter by name"
             sx={{ borderRadius: '6px', padding: '0.5em 1em' }}
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => onChangeFilter(e.target.value)}
           />
         </div>
         <ul className={classes.list}>
-          {characterCollection.results.map((character) => (
+          {visibleCharacters.map((character) => (
             <li key={character.id}>
               <CharacterCard
                 character={character}
@@ -78,9 +75,9 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
       <div className={classes.pagination}>
         <Pagination
           siblingCount={0}
-          count={characterCollection.info.pages}
-          page={page}
-          onChange={handleChange}
+          count={totalPages}
+          page={currentPage}
+          onChange={(_event, value) => onChangePage(value)}
         />
       </div>
     </>

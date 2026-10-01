@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import * as api from './api';
 import { createEmptyCharacter, Character } from './character.vm';
 import {
@@ -8,13 +8,22 @@ import {
 } from './character.mappers';
 import { CharacterComponent } from './character.component';
 
-export const CharacterContainer: React.FunctionComponent = (props) => {
+export const CharacterContainer: React.FunctionComponent = () => {
   const [character, setCharacter] = React.useState<Character>(
     createEmptyCharacter()
   );
+  const [isSave, setIsSave] = React.useState<'save' | 'error' | null>(null);
 
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (isSave === null) {
+      return;
+    }
+
+    const timeoutId = setTimeout(() => setIsSave(null), 3000);
+    return () => clearTimeout(timeoutId);
+  }, [isSave]);
 
   const handleLoadCharacter = async () => {
     const apiCharacter = await api.getCharacter(id);
@@ -28,14 +37,22 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
   }, []);
 
   const handleSave = async (character: Character) => {
+    setIsSave(null);
     const apiCharacter = mapCharacterFromVmToApi(character);
-    const success = await api.saveCharacter(apiCharacter);
-    if (success) {
-      navigate(-1);
-    } else {
-      alert('Error on save character');
+    try {
+      const response = await api.saveCharacter(apiCharacter);
+      response ? setIsSave('save') : setIsSave('error');
+    } catch {
+      console.error('Could not save character. Please try again.');
+      setIsSave('error');
     }
   };
 
-  return <CharacterComponent character={character} onSave={handleSave} />;
+  return (
+    <CharacterComponent
+      character={character}
+      onSave={handleSave}
+      isSave={isSave}
+    />
+  );
 };

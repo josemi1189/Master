@@ -63,3 +63,31 @@ export const btnData = css`
   gap: 1em;
   padding: 2em 0;
 `;
+
+export const saveButton = css`
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+`;
+
+export const saveButtonLabel = css`
+  display: inline-block;
+  animation: save-button-label-in 180ms ease-out;
+
+  @keyframes save-button-label-in {
+    from {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;

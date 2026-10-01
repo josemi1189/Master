@@ -1,7 +1,7 @@
 import * as API from './api';
 import * as VM from './episode-collection.vm';
 
-export const mapLocationCollectionFromApiToVm = (
+export const mapEpisodeCollectionFromApiToVm = (
   episodes: API.EpisodeEntityApi
 ): VM.EpisodeEntity => ({
   info: episodes.info,
