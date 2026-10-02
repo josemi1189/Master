@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { CharacterListResponse } from './character-collection.api-model';
 import { mockCharacterCollection } from './character-collection.mock-data';
-import * as CONSTANT from '#constants';
 
 let characterCollection = [...mockCharacterCollection];
 
 export const getCharacterCollection =
   async (): Promise<CharacterListResponse> => {
     try {
-      const response = await axios.get(CONSTANT.localUrlCharacter);
+      const response = await axios.get(import.meta.env.URL_LOCAL_CHARACTER);
       if (!response || response.status !== 200) {
         throw new Error(`Respuesta inválida: ${response?.status}`);
       }

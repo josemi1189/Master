@@ -1,9 +1,8 @@
 import { ResultCharacters } from './character.api-model';
-import * as CONSTANT from '#constants';
 import axios from 'axios';
 
 export const getCharacter = async (id: string): Promise<ResultCharacters> => {
-  const url = `${CONSTANT.localUrlCharacter}/${id}`;
+  const url = `${import.meta.env.URL_CHARACTER}/${id}`;
 
   try {
     let response = await axios.get(url);
@@ -19,7 +18,7 @@ export const getCharacter = async (id: string): Promise<ResultCharacters> => {
 export const saveCharacter = async (
   character: ResultCharacters
 ): Promise<boolean> => {
-  const url = `${CONSTANT.localUrlCharacter}/${character.id}`;
+  const url = `${import.meta.env.URL_LOCAL_CHARACTER}/${character.id}`;
 
   try {
     const response = await axios.put(url, character);

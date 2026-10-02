@@ -1,16 +1,6 @@
-import { ResultCharacters } from './character-collection.api-model';
+import { Character } from './character-collection.api-model';
 
-/*
-{
-  info: {
-    count: 3,
-    pages: 1,
-    next: null,
-    prev: null,
-  }
-
-*/
-export const mockCharacterCollection: ResultCharacters[] = [
+export const mockCharacterCollection: Character[] = [
   {
     id: 1,
     name: 'Rick Sanchez',

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import * as CONSTANT from '#constants';
 import React from 'react';
 
 export interface CharacterName {
@@ -10,7 +9,7 @@ export interface CharacterName {
 export const getCharacterNameById = async (ids: string[]) => {
   if (ids.length === 0) return [];
 
-  const url = `${CONSTANT.urlCharacter}/${ids.join(',')}`;
+  const url = `${import.meta.env.URL_LOCAL_CHARACTER}/${ids.join(',')}`;
   try {
     const response = await axios.get<CharacterName | CharacterName[]>(url);
     if (!response || response.status !== 200) {
