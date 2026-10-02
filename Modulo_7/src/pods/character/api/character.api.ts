@@ -4,7 +4,7 @@ import { mockCharacterCollection } from './character.mock-data';
 import axios from 'axios';
 
 export const getCharacter = async (id: string): Promise<ResultCharacters> => {
-  const url = `https://rickandmortyapi.com/api/character/${id}`;
+  const url = `${import.meta.env.URL_CHARACTER}/${id}`;
 
   try {
     let response = await axios.get(url);

@@ -1,13 +1,12 @@
 import axios from 'axios';
 import * as API from './location-collection.api-model';
-import * as CONSTANT from '#constants';
 
 export const getLocationCollection = async (
   page: number = 1,
   filterName: string = ''
 ): Promise<API.LocationEntity> => {
   try {
-    const response = await axios.get(CONSTANT.urlLocation, {
+    const response = await axios.get(import.meta.env.URL_LOCATION, {
       params: { page },
     });
     if (!response || response.status !== 200) {

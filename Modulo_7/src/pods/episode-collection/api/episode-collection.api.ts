@@ -1,13 +1,12 @@
 import axios from 'axios';
 import { EpisodeEntityApi } from './episode-collection.api-model';
-import * as CONSTANT from '#constants';
 
 export const getEpisodeCollection = async (
   page: number = 1,
   filterName: string = ''
 ): Promise<EpisodeEntityApi> => {
   try {
-    const response = await axios.get(CONSTANT.urlEpisode, {
+    const response = await axios.get(import.meta.env.URL_EPISODE, {
       params: { page },
     });
     if (!response || response.status !== 200) {

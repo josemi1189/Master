@@ -8,7 +8,7 @@ export const getCharacterCollection = async (
   page: number = 1,
   filterName: string = ''
 ): Promise<CharacterEntityApi> => {
-  const url = 'https://rickandmortyapi.com/api/character';
+  const url = import.meta.env.URL_CHARACTER;
 
   try {
     const response = await axios.get(url, {
