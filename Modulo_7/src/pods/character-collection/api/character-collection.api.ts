@@ -1,8 +1,5 @@
 import axios from 'axios';
 import { CharacterListResponse } from './character-collection.api-model';
-import { mockCharacterCollection } from './character-collection.mock-data';
-
-let characterCollection = [...mockCharacterCollection];
 
 export const getCharacterCollection =
   async (): Promise<CharacterListResponse> => {
@@ -18,8 +15,6 @@ export const getCharacterCollection =
   };
 
 export const deleteCharacter = async (id: string): Promise<boolean> => {
-  characterCollection = characterCollection.filter(
-    (h) => h.id.toString() !== id
-  );
+  console.log('Delete character ID: ', id);
   return true;
 };

@@ -7,13 +7,10 @@ export const useCharacterCollection = () => {
   const [characterCollection, setCharacterCollection] =
     React.useState<CharacterListResponse>();
 
-  const loadCharacterCollection = React.useCallback(
-    (page: number = 1, name: string = '') => {
-      getCharacterCollection(page, name).then((result) => {
-        setCharacterCollection(mapCharacterCollectionFromApiToVm(result));
-      });
-    },
-    []
-  );
+  const loadCharacterCollection = React.useCallback(() => {
+    getCharacterCollection().then((result) => {
+      setCharacterCollection(mapCharacterCollectionFromApiToVm(result));
+    });
+  }, []);
   return { characterCollection, loadCharacterCollection };
 };

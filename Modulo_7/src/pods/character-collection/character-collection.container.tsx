@@ -45,7 +45,7 @@ export const CharacterCollectionContainer = () => {
 
   const handleDelete = async (id: string) => {
     await deleteCharacter(id);
-    loadCharacterCollection(1, debouncedFilter);
+    loadCharacterCollection();
   };
 
   const handleFilterName = (filter: string) => {

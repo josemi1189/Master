@@ -13,7 +13,7 @@ interface Props {
 export const LocationCollectionComponent: React.FC<Props> = (props) => {
   const { locationCollection, charactersById, currentPage, onChangePage } =
     props;
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     onChangePage(value);
   };
 
