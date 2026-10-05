@@ -2,7 +2,7 @@ import { ResultCharacters } from './character.api-model';
 import axios from 'axios';
 
 export const getCharacter = async (id: string): Promise<ResultCharacters> => {
-  const url = `${import.meta.env.URL_CHARACTER}/${id}`;
+  const url = `${import.meta.env.URL_LOCAL_CHARACTER}/${id}`;
 
   try {
     let response = await axios.get(url);
