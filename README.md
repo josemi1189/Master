@@ -9,3 +9,5 @@
 - **Módulo 5** - MetaFrameworks
   - Next.JS
   - Nuxt
+  - TansTack
+- **Módulo 6** - React Unit Testing

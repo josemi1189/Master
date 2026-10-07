@@ -7,5 +7,9 @@ interface Props {
 
 export const CenteredLayout: React.FC<Props> = (props) => {
   const { children } = props;
-  return <div className={classes.root}>{children}</div>;
+  return (
+    <div className={classes.root} data-testid="login-container">
+      {children}
+    </div>
+  );
 };
