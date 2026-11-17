@@ -14,6 +14,8 @@
 
 🔗 [GitHub Pages](https://josemi1189.github.io/mod8-cloud-github-pages-auto/)
 
+<br>
+
 ## OPCIONAL
 
 ### 1. Desplegar la app en Render, usando despliegue manual.
